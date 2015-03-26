@@ -1,4 +1,4 @@
-package de.wagnst.tpe.exercises.exercise2;
+package de.wagnst.tpe.exercises.exercise2.master;
 
 public class Currencies {
 
