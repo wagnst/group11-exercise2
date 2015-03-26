@@ -38,6 +38,11 @@ public class Currency {
     }
 
     public String toString() {
+        long cent = getExchangeRate() % 10000;
+        long euro = getExchangeRate() / 10000;
+        return "" + name + " [" + code + "] 1 $ = " + euro + "," + cent + " "
+                + code;
+
     }
 
     public int hashCode() {
