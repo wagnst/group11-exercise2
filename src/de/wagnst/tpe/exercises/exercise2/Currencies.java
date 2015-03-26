@@ -1,3 +1,5 @@
+package de.wagnst.tpe.exercises.exercise2;
+
 public class Currencies {
 
     /** US-Dollar */

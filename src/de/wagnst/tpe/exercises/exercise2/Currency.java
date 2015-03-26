@@ -1,3 +1,4 @@
+package de.wagnst.tpe.exercises.exercise2;
 public class Currency {
 
     public Currency(...) {

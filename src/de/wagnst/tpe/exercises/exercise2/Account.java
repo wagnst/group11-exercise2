@@ -1,3 +1,5 @@
+package de.wagnst.tpe.exercises.exercise2;
+
 public class Account {
 
     public Account(String owner, Currency currency) {
@@ -17,7 +19,7 @@ public class Account {
 
     public String statement() {
     }
-    
+
     public void accountFee(int promille) {
     }
 
