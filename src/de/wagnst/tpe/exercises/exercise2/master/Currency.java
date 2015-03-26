@@ -14,6 +14,10 @@ public class Currency {
         this.subunit = subunit;
     }
 
+    public Currency(String name, String code, long exchangeRate) {
+        this(name, code, exchangeRate, false);
+    }
+
     public long convert(long betrag, Currency toWaehrung) {
     }
 
