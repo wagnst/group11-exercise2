@@ -7,10 +7,14 @@ public class Currency {
     long exchangeRate;
     boolean subunit;
 
+    // accuracy after the decimal point
+    int digit = 4;
+
     public Currency(String name, String code, long exchangeRate, boolean subunit) {
         this.name = name;
         this.code = code;
         this.exchangeRate = exchangeRate;
+        ;
         this.subunit = subunit;
     }
 
@@ -37,11 +41,39 @@ public class Currency {
         return subunit;
     }
 
+    /**
+     * Wandelt Eingabe Wechselkurs in Funschformat euro,cent um; Ohne Verlust
+     * durch Rundungsfehler
+     * 
+     * @param exchangeRate
+     *            Wechselkurs zum Dollar, ohne Nachkommastelle
+     * @return Wechselkurs codiert als String
+     */
+    private String convertToString(long exchangeRate) {
+        String result = "";
+        long[] digit = new long[this.digit + 1];
+        int i = this.digit;
+
+        while (exchangeRate > 0) {
+            digit[i] = exchangeRate % 10;
+            exchangeRate /= 10;
+            i--;
+        }
+
+        for (int j = 1; j <= this.digit; j++) {
+            result += digit[j];
+        }
+        return "" + digit[0] + "," + result;
+    }
+
+    /**
+     * 
+     * @return String im gewünschten Format
+     */
     public String toString() {
-        long cent = getExchangeRate() % 10000;
-        long euro = getExchangeRate() / 10000;
-        return "" + name + " [" + code + "] 1 $ = " + euro + "," + cent + " "
-                + code;
+
+        return "" + name + " [" + code + "] 1 $ = "
+                + convertToString(this.exchangeRate) + " " + code;
 
     }
 
