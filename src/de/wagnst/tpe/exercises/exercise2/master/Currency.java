@@ -1,14 +1,14 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
-public class Currency {
+public final class Currency {
 
-    String name;
-    String code;
-    long exchangeRate;
-    boolean subunit;
+    private String name;
+    private String code;
+    private long exchangeRate;
+    private boolean subunit;
 
     // accuracy after the decimal point
-    int digit = 4;
+    private int digit = 4;
 
     public Currency(String name, String code, long exchangeRate, boolean subunit) {
         this.name = name;
@@ -51,8 +51,8 @@ public class Currency {
      */
     private String convertToString(long exchangeRate) {
         // this.digit gives no information about how many
-        // digits are infront of the deciaml point;
-        // atleast one (0,001)
+        // digits are in front of the decimal point;
+        // at least one (0,001)
         int arraySize = this.digit + 1;
         String infrontOf = "";
         String behindOf = "";
@@ -71,13 +71,13 @@ public class Currency {
         int euroPointer = 0;
         int centPointer = arraySize - this.digit;
 
-        // creat String with all digits infront of the decimal point
+        // create String with all digits in front of the decimal point
         while (euroPointer < centPointer) {
             infrontOf += digit[euroPointer];
             euroPointer++;
         }
 
-        // creat String with all digits behind the decimal point
+        // create String with all digits behind the decimal point
         while ((centPointer) < digit.length) {
             behindOf += digit[centPointer];
             centPointer++;
