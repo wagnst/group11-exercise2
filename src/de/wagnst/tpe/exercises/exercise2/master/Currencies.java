@@ -7,7 +7,7 @@ package de.wagnst.tpe.exercises.exercise2.master;
  * @author Max
  *
  */
-public class Currencies {
+public final class Currencies {
 
     /** US-Dollar */
     public static final Currency DOLLAR = new Currency("Dollar", "$", 10000);
