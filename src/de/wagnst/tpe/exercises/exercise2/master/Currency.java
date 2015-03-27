@@ -46,24 +46,45 @@ public class Currency {
      * durch Rundungsfehler
      * 
      * @param exchangeRate
-     *            Wechselkurs zum Dollar, ohne Nachkommastelle
+     *            Wechselkurs zum Dollar Ganzzahl
      * @return Wechselkurs codiert als String
      */
     private String convertToString(long exchangeRate) {
-        String result = "";
-        long[] digit = new long[this.digit + 1];
-        int i = this.digit;
+        int size = this.digit;
+        String euro = "";
+        String cent = "";
 
-        while (exchangeRate > 0) {
+        // counting digits infront of the deciaml point; save this Information
+        // at variable size
+        while ((exchangeRate / (int) Math.pow(10, size + 1)) > 0) {
+            size++;
+        }
+
+        // creat array with space for all digits
+        long[] digit = new long[size + 1];
+
+        // digits get set into the array
+        for (int i = size; i >= 0; i--) {
             digit[i] = exchangeRate % 10;
             exchangeRate /= 10;
-            i--;
+        }
+        int centPointer = size + 1 - this.digit;
+        int euroPointer = 0;
+
+        // creat String of digits infront of the decimal point
+        while (euroPointer < centPointer) {
+            euro += digit[euroPointer];
+            euroPointer++;
         }
 
-        for (int j = 1; j <= this.digit; j++) {
-            result += digit[j];
+        // creat Sting of digits behind the decimal point
+
+        while ((centPointer) < digit.length) {
+            cent += digit[centPointer];
+            centPointer++;
         }
-        return "" + digit[0] + "," + result;
+
+        return "" + euro + "," + cent;
     }
 
     /**
