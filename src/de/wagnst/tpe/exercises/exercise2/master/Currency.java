@@ -1,5 +1,7 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
+import java.util.Arrays;
+
 public final class Currency {
 
     private String name;
@@ -22,7 +24,20 @@ public final class Currency {
         this(name, code, exchangeRate, false);
     }
 
-    public long convert(long betrag, Currency toWaehrung) {
+    /**
+     * Konvertiert den gewünschten Betrag in die angegebene Währung
+     * 
+     * @param amount
+     *            zu konvertierender Betrag
+     * @param toCurrency
+     *            in zu konvertierende Währung
+     * @return Konvertierter Betrag
+     */
+    public long convert(long amount, Currency toCurrency) {
+
+        amount *= this.exchangeRate * 10000;
+        return amount / (toCurrency.exchangeRate*10000);
+
     }
 
     public long getExchangeRate() {
@@ -97,9 +112,25 @@ public final class Currency {
 
     }
 
+    /**
+     * Erzeugt hashCode für das Objekt
+     */
     public int hashCode() {
+        return Arrays.hashCode(new double[] { this.exchangeRate });
     }
 
-    public boolean equals(Object obj) {
+    /**
+     * Prüft zwei Objekte auf Gleichheit
+     * 
+     * @param o
+     *            zu verlgeichendes Objekt
+     * @return boolean
+     */
+    public boolean equals(Object o) {
+        if (o instanceof Currency) {
+            return this.toString().equals(o.toString());
+        } else {
+            return false;
+        }
     }
 }
