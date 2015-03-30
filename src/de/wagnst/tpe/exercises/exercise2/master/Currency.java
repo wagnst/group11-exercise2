@@ -35,8 +35,9 @@ public final class Currency {
      */
     public long convert(long amount, Currency toCurrency) {
 
-        amount *= this.exchangeRate * 10000;
-        return amount / (toCurrency.exchangeRate*10000);
+        amount *= this.exchangeRate;
+
+        return amount / toCurrency.exchangeRate;
 
     }
 
