@@ -37,7 +37,7 @@ public final class Amount {
     /**
      * Gibt Information über die Höhe des gespeicherten Betrages
      * 
-     * @return long amount, jedoch mit nur zwei Nachkommastellen
+     * @return long amount, mit zwei Nachkommastellen, immer positiv
      */
     public long toLong() {
         long result = this.amount;
