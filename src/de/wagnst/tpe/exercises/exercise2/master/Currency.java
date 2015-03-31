@@ -66,9 +66,7 @@ public final class Currency {
      * @return Wechselkurs codiert als String
      */
     private String convertToString(long exchangeRate) {
-        // this.digit gives no information about how many
-        // digits are in front of the decimal point;
-        // at least one (0,001)
+        // at least one digit infront of the decimal point (this.digit + 1)
         int arraySize = this.digit + 1;
         String infrontOf = "";
         String behindOf = "";
