@@ -20,10 +20,6 @@ public final class Currency {
         this.subunit = subunit;
     }
 
-    public Currency(String name, String code, long exchangeRate) {
-        this(name, code, exchangeRate, false);
-    }
-
     /**
      * Konvertiert den gewünschten Betrag in die angegebene Währung
      * 
