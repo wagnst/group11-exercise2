@@ -40,12 +40,16 @@ public final class Amount {
      * @return long amount, jedoch mit nur zwei Nachkommastellen
      */
     public long toLong() {
-
+        long result = this.amount;
+        // turn a negative into a positiv long value
+        if (this.amount < 0) {
+            result = this.amount + (-2 * this.amount);
+        }
         if (!chop) {
             // chop 3rd and 4th digit
-            return this.amount / 100;
+            return result / 100;
         } else {
-            return this.amount;
+            return result;
         }
     }
 
@@ -66,7 +70,13 @@ public final class Amount {
     public double toDouble() {
     }
 
+    /**
+     * Liefert für einen Betrag die Währung zurück
+     * 
+     * @return die Währung des Betrages
+     */
     public Currency getCurrency() {
+        return this.currency;
     }
 
     public String toString() {
