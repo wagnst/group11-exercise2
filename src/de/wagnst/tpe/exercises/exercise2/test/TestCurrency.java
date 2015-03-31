@@ -22,7 +22,7 @@ public class TestCurrency {
                 Currencies.CHF.toString());
 
         // rate with more than one digit in front of the decimal point
-        Currency higherExchangeRate = new Currency("Test", "?!", 1200000);
+        Currency higherExchangeRate = new Currency("Test", "?!", 1200000, false);
         assertEquals("Test [?!] 1 $ = 120,0000 ?!",
                 higherExchangeRate.toString());
     }
