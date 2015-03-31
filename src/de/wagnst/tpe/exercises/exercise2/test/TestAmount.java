@@ -33,10 +33,17 @@ public class TestAmount {
         Amount amount2 = new Amount(10000, Currencies.EURO);
         Amount amount3 = new Amount(-10.000, Currencies.EURO);
         Amount amount4 = new Amount(10.000, Currencies.EURO);
-        
+
         assertEquals(-1, amount1.getSign());
-        assertEquals(1,amount2.getSign());
-        assertEquals(-1,amount3.getSign());
-        assertEquals(1,amount4.getSign());
+        assertEquals(1, amount2.getSign());
+        assertEquals(-1, amount3.getSign());
+        assertEquals(1, amount4.getSign());
+    }
+
+    @Test
+    public void testGetCurrency() {
+        Amount amount1 = new Amount(-10000, Currencies.EURO);
+
+        assertEquals(Currencies.EURO, amount1.getCurrency());
     }
 }
