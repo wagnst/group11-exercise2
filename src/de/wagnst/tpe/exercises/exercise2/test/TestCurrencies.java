@@ -16,22 +16,28 @@ public class TestCurrencies {
         assertEquals("Dollar", Currencies.DOLLAR.getName());
         assertEquals("$", Currencies.DOLLAR.getCode());
         assertEquals(10000, Currencies.DOLLAR.getExchangeRate());
+        assertEquals(true, Currencies.DOLLAR.hasSubunit());
 
         assertEquals("Euro", Currencies.EURO.getName());
         assertEquals("€", Currencies.EURO.getCode());
         assertEquals(12690, Currencies.EURO.getExchangeRate());
+        assertEquals(true, Currencies.DOLLAR.hasSubunit());
 
         assertEquals("Yen", Currencies.YEN.getName());
         assertEquals("¥", Currencies.YEN.getCode());
         assertEquals(91, Currencies.YEN.getExchangeRate());
+        assertEquals(false, Currencies.YEN.hasSubunit());
 
         assertEquals("Rubel", Currencies.RUBEL.getName());
         assertEquals("RUB", Currencies.RUBEL.getCode());
         assertEquals(255, Currencies.RUBEL.getExchangeRate());
+        assertEquals(false, Currencies.RUBEL.hasSubunit());
 
         assertEquals("Schweizer Franken", Currencies.CHF.getName());
         assertEquals("CHF", Currencies.CHF.getCode());
         assertEquals(10509, Currencies.CHF.getExchangeRate());
+        assertEquals(true, Currencies.CHF.hasSubunit());
+
 
     }
 
