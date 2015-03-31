@@ -21,11 +21,10 @@ public class TestCurrency {
         assertEquals("Schweizer Franken [CHF] 1 $ = 1,0509 CHF",
                 Currencies.CHF.toString());
 
-        // rate with more than one digit infront of the decimal point
-        Currency HigherExchangeRate = new Currency("Test", "?!", 1200000);
+        // rate with more than one digit in front of the decimal point
+        Currency higherExchangeRate = new Currency("Test", "?!", 1200000);
         assertEquals("Test [?!] 1 $ = 120,0000 ?!",
-                HigherExchangeRate.toString());
-
+                higherExchangeRate.toString());
     }
 
     /**
@@ -98,9 +97,9 @@ public class TestCurrency {
                 0001);
         assertEquals(100000, Currencies.CHF.convert(120754, Currencies.EURO),
                 0001);
-        // assertEquals(866, Currencies.CHF.convert(100000, Currencies.YEN),
-        // 0001);
-        assertEquals(100000, Currencies.CHF.convert(2426, Currencies.RUBEL),
-                0001);// 99979 Ergebnis
+        assertEquals(11548351, Currencies.CHF.convert(100000, Currencies.YEN),
+                0001);
+        assertEquals(4121176, Currencies.CHF.convert(100000, Currencies.RUBEL),
+                0001);
     }
 }
