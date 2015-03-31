@@ -46,4 +46,45 @@ public class TestAmount {
 
         assertEquals(Currencies.EURO, amount1.getCurrency());
     }
+
+    @Test
+    public void testAddSubLong() {
+        Amount amount1 = new Amount(100000, Currencies.EURO);
+        Amount amount2 = new Amount(-150000, Currencies.EURO);
+        Amount amount3 = new Amount(-50000, Currencies.EURO);
+        Amount amount4 = new Amount(100000, Currencies.DOLLAR);
+        Amount amount5 = new Amount(178802, Currencies.EURO);
+        Amount amount6 = new Amount(100000, Currencies.RUBEL);
+        Amount amount7 = new Amount(100000, Currencies.YEN);
+        Amount amount8 = new Amount(135686, Currencies.RUBEL);
+
+        assertEquals(amount3.toLong(), (amount1.add(amount2)).toLong());
+        assertEquals(amount5.toLong(), (amount1.add(amount4)).toLong());
+        assertEquals(amount8.toLong(), (amount6.add(amount7)).toLong());
+
+        assertEquals(amount1.toLong(), (amount3.subtract(amount2)).toLong());
+        assertEquals(amount1.toLong(), (amount5.subtract(amount4)).toLong());
+        assertEquals(amount6.toLong(), (amount8.subtract(amount7)).toLong());
+    }
+
+    @Test
+    public void testAddSubDouble() {
+        Amount amount1 = new Amount(10.00, Currencies.EURO);
+        Amount amount2 = new Amount(-15.00, Currencies.EURO);
+        Amount amount3 = new Amount(-5.00, Currencies.EURO);
+        Amount amount4 = new Amount(10.00, Currencies.DOLLAR);
+        Amount amount5 = new Amount(17.88, Currencies.EURO);
+        Amount amount6 = new Amount(10.00, Currencies.RUBEL);
+        Amount amount7 = new Amount(10.00, Currencies.YEN);
+        Amount amount8 = new Amount(13.56, Currencies.RUBEL);
+
+        assertEquals(amount3.toDouble(), (amount1.add(amount2)).toDouble());
+        assertEquals(amount5.toDouble(), (amount1.add(amount4)).toDouble());
+        assertEquals(amount8.toDouble(), (amount6.add(amount7)).toDouble());
+
+        assertEquals(amount1.toDouble(), (amount3.subtract(amount2)).toDouble());
+        assertEquals(amount1.toDouble(), (amount5.subtract(amount4)).toDouble());
+        assertEquals(amount6.toDouble(), (amount8.subtract(amount7)).toDouble());
+
+    }
 }
