@@ -1,5 +1,7 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
+import de.wagnst.tpe.exercises.exercise2.master.Currency;
+
 public final class Amount {
 
     private long amount;
@@ -19,10 +21,39 @@ public final class Amount {
         this.chop = true;
     }
 
+    /**
+     * Addiert zwei Beträge, die Währung des ersten Betrages wird beibehalten
+     * 
+     * @param other
+     *            , zu addierender Betrag
+     * @return Summe der beiden Beträge
+     */
     public Amount add(Amount other) {
+        if (this.currency.equals(other.currency)) {
+            return new Amount((this.amount + other.amount), this.currency);
+        } else {
+            return new Amount(this.amount
+                    + other.currency.convert(other.amount, this.currency),
+                    this.currency);
+        }
     }
 
+    /**
+     * Subtrahier zwei Beträge, die Währung des ersten Betrages wird beibehalten
+     * 
+     * @param other
+     *            , zu subtrahierender Betrag
+     * @return Differenz der beiden Beträge
+     */
     public Amount subtract(Amount other) {
+
+        if (this.currency.equals(other.currency)) {
+            return new Amount((this.amount - other.amount), this.currency);
+        } else {
+            return new Amount(this.amount
+                    - other.currency.convert(other.amount, this.currency),
+                    this.currency);
+        }
     }
 
     public Amount multiply(double factor) {
@@ -67,7 +98,14 @@ public final class Amount {
         }
     }
 
+    /**
+     * Gibt Information über die Höhe des gespeicherten Betrages
+     * 
+     * @return double amount, mit zwei Nachkommastellen, immer positiv
+     */
     public double toDouble() {
+        System.out.println((double) this.amount);
+        return (double) this.amount;
     }
 
     /**
