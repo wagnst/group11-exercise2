@@ -5,6 +5,7 @@ import de.wagnst.tpe.exercises.exercise2.master.Currencies;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class TestAmount {
 
@@ -87,6 +88,23 @@ public class TestAmount {
         assertEquals(amount1, (amount3.subtract(amount2)));
         assertEquals(amount1, (amount5.subtract(amount4)));
         assertEquals(amount6, (amount8.subtract(amount7)));
+
+    }
+
+    @Test
+    public void testToLong() {
+        Amount amount1 = new Amount(10.00, Currencies.EURO);
+
+        assertNotEquals(10000, amount1.toLong());
+        assertEquals(1000, amount1.toLong());
+
+    }
+
+    @Test
+    public void testToDouble() {
+        Amount amount1 = new Amount(10000, Currencies.EURO);
+
+        assertEquals(10.0, amount1.toDouble());
 
     }
 }
