@@ -1,7 +1,5 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
-import de.wagnst.tpe.exercises.exercise2.master.Currency;
-
 public final class Amount {
 
     private long amount;
@@ -22,11 +20,11 @@ public final class Amount {
     }
 
     /**
-     * Addiert zwei Beträge, die Währung des ersten Betrages wird beibehalten
-     * 
-     * @param other
-     *            , zu addierender Betrag
-     * @return Summe der beiden Beträge
+     * Addiert zwei BetrÃ¤ge, die WÃ¤hrung des ersten Betrages wird beibehalten
+     *
+     * @param other , zu addierender Betrag
+     *
+     * @return Summe der beiden BetrÃ¤ge
      */
     public Amount add(Amount other) {
         if (this.currency.equals(other.currency)) {
@@ -39,11 +37,12 @@ public final class Amount {
     }
 
     /**
-     * Subtrahier zwei Beträge, die Währung des ersten Betrages wird beibehalten
-     * 
-     * @param other
-     *            , zu subtrahierender Betrag
-     * @return Differenz der beiden Beträge
+     * Subtrahiere zwei BetrÃ¤ge, die WÃ¤hrung des ersten Betrages wird
+     * beibehalten
+     *
+     * @param other , zu subtrahierender Betrag
+     *
+     * @return Differenz der beiden BetrÃ¤ge
      */
     public Amount subtract(Amount other) {
 
@@ -57,17 +56,20 @@ public final class Amount {
     }
 
     public Amount multiply(double factor) {
+        return null;
     }
 
     public Amount multiply(int factor) {
+        return null;
     }
 
     public Amount percentage(int percent) {
+        return null;
     }
 
     /**
-     * Gibt Information über die Höhe des gespeicherten Betrages
-     * 
+     * Gibt Information Ã¼ber die HÃ¶he des gespeicherten Betrages
+     *
      * @return long amount, mit zwei Nachkommastellen, immer positiv
      */
     public long toLong() {
@@ -85,8 +87,8 @@ public final class Amount {
     }
 
     /**
-     * prüft ob der Betrag positiv ist
-     * 
+     * prï¿½ft ob der Betrag positiv ist
+     *
      * @return +1 = Betrag >= 0 ; -1 = Betrag < 0
      */
     public int getSign() {
@@ -99,8 +101,8 @@ public final class Amount {
     }
 
     /**
-     * Gibt Information über die Höhe des gespeicherten Betrages
-     * 
+     * Gibt Information Ã¼ber die HÃ¶he des gespeicherten Betrages
+     *
      * @return double amount, mit zwei Nachkommastellen, immer positiv
      */
     public double toDouble() {
@@ -109,20 +111,28 @@ public final class Amount {
     }
 
     /**
-     * Liefert für einen Betrag die Währung zurück
-     * 
-     * @return die Währung des Betrages
+     * Liefert fÃ¼r einen Betrag die WÃ¤hrung zurï¿½ck
+     *
+     * @return die WÃ¤hrung des Betrages
      */
     public Currency getCurrency() {
         return this.currency;
     }
 
     public String toString() {
+        return null;
     }
 
     public int hashCode() {
+        return 0;
     }
 
+    @Override
     public boolean equals(Object obj) {
+        if (obj instanceof Amount) {
+            //return true if amount and currency is equal. ignore chop!
+            return ((((Amount) obj).amount == this.amount) && (((Amount) obj).currency == this.currency));
+        }
+        return false;
     }
 }
