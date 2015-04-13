@@ -78,7 +78,7 @@ public final class Amount {
         if (this.amount < 0) {
             result = this.amount + (-2 * this.amount);
         }
-        if (!chop) {
+        if (!this.chop) {
             // chop 3rd and 4th digit
             return result / 100;
         } else {
@@ -106,7 +106,12 @@ public final class Amount {
      * @return double amount, mit zwei Nachkommastellen, immer positiv
      */
     public double toDouble() {
-        return (double) this.amount;
+        if (!this.chop) {
+            // chop 3rd and 4th digit
+            return (double) this.amount / 1000;
+        } else {
+            return (double) this.amount;
+        }
     }
 
     /**
