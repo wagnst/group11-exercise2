@@ -16,17 +16,15 @@ public final class Currency {
         this.name = name;
         this.code = code;
         this.exchangeRate = exchangeRate;
-        ;
         this.subunit = subunit;
     }
 
     /**
      * Konvertiert den gewünschten Betrag in die angegebene Währung
-     * 
-     * @param amount
-     *            zu konvertierender Betrag
-     * @param toCurrency
-     *            in zu konvertierende Währung
+     *
+     * @param amount     zu konvertierender Betrag
+     * @param toCurrency in zu konvertierende Währung
+     *
      * @return Konvertierter Betrag
      */
     public long convert(long amount, Currency toCurrency) {
@@ -56,9 +54,9 @@ public final class Currency {
     /**
      * Wandelt Wechselkurs in Funschformat euro,cent um; Ohne Verlust durch
      * Rundungsfehler
-     * 
-     * @param exchangeRate
-     *            Wechselkurs zum Dollar Ganzzahl
+     *
+     * @param exchangeRate Wechselkurs zum Dollar Ganzzahl
+     *
      * @return Wechselkurs codiert als String
      */
     private String convertToString(long exchangeRate) {
@@ -97,7 +95,6 @@ public final class Currency {
     }
 
     /**
-     * 
      * @return String im gewünschten Format
      */
     public String toString() {
@@ -111,14 +108,14 @@ public final class Currency {
      * Erzeugt hashCode für das Objekt
      */
     public int hashCode() {
-        return Arrays.hashCode(new double[] { this.exchangeRate });
+        return Arrays.hashCode(new double[]{this.exchangeRate});
     }
 
     /**
      * Prüft zwei Objekte auf Gleichheit
-     * 
-     * @param o
-     *            zu verlgeichendes Objekt
+     *
+     * @param o zu verlgeichendes Objekt
+     *
      * @return boolean
      */
     public boolean equals(Object o) {
