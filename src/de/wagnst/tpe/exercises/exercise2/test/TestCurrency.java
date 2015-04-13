@@ -1,9 +1,10 @@
 package de.wagnst.tpe.exercises.exercise2.test;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
-import de.wagnst.tpe.exercises.exercise2.master.Currency;
 import de.wagnst.tpe.exercises.exercise2.master.Currencies;
+import de.wagnst.tpe.exercises.exercise2.master.Currency;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class TestCurrency {
 
