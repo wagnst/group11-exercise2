@@ -106,7 +106,6 @@ public final class Amount {
      * @return double amount, mit zwei Nachkommastellen, immer positiv
      */
     public double toDouble() {
-        System.out.println((double) this.amount);
         return (double) this.amount;
     }
 
