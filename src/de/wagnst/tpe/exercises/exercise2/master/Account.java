@@ -9,20 +9,25 @@ public class Account {
     }
 
     public Amount total() {
+        return null;
     }
 
     public Currency getCurrency() {
+        return null;
     }
 
     public String getOwner() {
+        return null;
     }
 
     public String statement() {
+        return null;
     }
 
     public void accountFee(int promille) {
     }
 
     public String toString() {
+        return null;
     }
 }
