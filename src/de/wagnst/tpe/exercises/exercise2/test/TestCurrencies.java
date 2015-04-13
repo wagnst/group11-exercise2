@@ -7,8 +7,8 @@ import de.wagnst.tpe.exercises.exercise2.master.Currencies;
 public class TestCurrencies {
 
     /**
-     * Testet die drei unveränderlichen Attribute "name,code,exchangeRate" der
-     * Währung
+     * Testet die drei unverÃ¤nderlichen Attribute "name,code,exchangeRate" der
+     * WÃ¤hrung
      */
     @Test
     public void TestCreation() {
@@ -19,12 +19,12 @@ public class TestCurrencies {
         assertEquals(true, Currencies.DOLLAR.hasSubunit());
 
         assertEquals("Euro", Currencies.EURO.getName());
-        assertEquals("€", Currencies.EURO.getCode());
+        assertEquals("â‚¬", Currencies.EURO.getCode());
         assertEquals(12690, Currencies.EURO.getExchangeRate());
         assertEquals(true, Currencies.DOLLAR.hasSubunit());
 
         assertEquals("Yen", Currencies.YEN.getName());
-        assertEquals("¥", Currencies.YEN.getCode());
+        assertEquals("Â¥", Currencies.YEN.getCode());
         assertEquals(91, Currencies.YEN.getExchangeRate());
         assertEquals(false, Currencies.YEN.hasSubunit());
 

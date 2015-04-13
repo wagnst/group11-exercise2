@@ -21,12 +21,12 @@ public final class Currency {
     }
 
     /**
-     * Konvertiert den gewünschten Betrag in die angegebene Währung
+     * Konvertiert den gewÃ¼nschten Betrag in die angegebene WÃ¤hrung
      * 
      * @param amount
      *            zu konvertierender Betrag
      * @param toCurrency
-     *            in zu konvertierende Währung
+     *            in zu konvertierende WÃ¤hrung
      * @return Konvertierter Betrag
      */
     public long convert(long amount, Currency toCurrency) {
@@ -98,7 +98,7 @@ public final class Currency {
 
     /**
      * 
-     * @return String im gewünschten Format
+     * @return String im gewÃ¼nschten Format
      */
     public String toString() {
 
@@ -108,14 +108,14 @@ public final class Currency {
     }
 
     /**
-     * Erzeugt hashCode für das Objekt
+     * Erzeugt hashCode fÃ¼r das Objekt
      */
     public int hashCode() {
         return Arrays.hashCode(new double[] { this.exchangeRate });
     }
 
     /**
-     * Prüft zwei Objekte auf Gleichheit
+     * PrÃ¼ft zwei Objekte auf Gleichheit
      * 
      * @param o
      *            zu verlgeichendes Objekt

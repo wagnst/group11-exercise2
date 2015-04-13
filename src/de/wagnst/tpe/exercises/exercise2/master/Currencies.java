@@ -1,7 +1,7 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
 /**
- * enthält vorgefertigte Objekte von Währungen mit den jeweiligen Wechselkursen,
+ * enthÃ¤lt vorgefertigte Objekte von WÃ¤hrungen mit den jeweiligen Wechselkursen,
  * damit man diese einfach innerhalb des Programms wiederverwenden kann.
  * 
  * @author Max
@@ -13,10 +13,10 @@ public final class Currencies {
     public static final Currency DOLLAR = new Currency("Dollar", "$", 10000,
             true);
     /** EURO */
-    public static final Currency EURO = new Currency("Euro", "€", 12690, true);
+    public static final Currency EURO = new Currency("Euro", "â‚¬", 12690, true);
 
     /** Japanischer Yen */
-    public static final Currency YEN = new Currency("Yen", "¥", 91, false);
+    public static final Currency YEN = new Currency("Yen", "Â¥", 91, false);
 
     /** Rubel der russischen FÃ¶deration */
     public static final Currency RUBEL = new Currency("Rubel", "RUB", 255,
