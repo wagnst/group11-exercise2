@@ -1,8 +1,10 @@
 package de.wagnst.tpe.exercises.exercise2.test;
 
-import static org.junit.Assert.assertEquals;
+import de.wagnst.tpe.exercises.exercise2.master.Amount;
+import de.wagnst.tpe.exercises.exercise2.master.Currencies;
 import org.junit.Test;
-import de.wagnst.tpe.exercises.exercise2.master.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestAmount {
 
@@ -78,13 +80,13 @@ public class TestAmount {
         Amount amount7 = new Amount(10.00, Currencies.YEN);
         Amount amount8 = new Amount(13.56, Currencies.RUBEL);
 
-        assertEquals(amount3.toDouble(), (amount1.add(amount2)).toDouble());
-        assertEquals(amount5.toDouble(), (amount1.add(amount4)).toDouble());
-        assertEquals(amount8.toDouble(), (amount6.add(amount7)).toDouble());
+        assertEquals(amount3, (amount1.add(amount2)));
+        assertEquals(amount5, (amount1.add(amount4)));
+        assertEquals(amount8, (amount6.add(amount7)));
 
-        assertEquals(amount1.toDouble(), (amount3.subtract(amount2)).toDouble());
-        assertEquals(amount1.toDouble(), (amount5.subtract(amount4)).toDouble());
-        assertEquals(amount6.toDouble(), (amount8.subtract(amount7)).toDouble());
+        assertEquals(amount1, (amount3.subtract(amount2)));
+        assertEquals(amount1, (amount5.subtract(amount4)));
+        assertEquals(amount6, (amount8.subtract(amount7)));
 
     }
 }
