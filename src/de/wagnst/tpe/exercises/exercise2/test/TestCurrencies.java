@@ -1,8 +1,9 @@
 package de.wagnst.tpe.exercises.exercise2.test;
 
-import static org.junit.Assert.assertEquals;
-import org.junit.Test;
 import de.wagnst.tpe.exercises.exercise2.master.Currencies;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestCurrencies {
 
