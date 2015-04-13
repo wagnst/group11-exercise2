@@ -115,7 +115,7 @@ public final class Amount {
     }
 
     /**
-     * Liefert für einen Betrag die Währung zur�ck
+     * Liefert für einen Betrag die Währung zurück
      *
      * @return die Währung des Betrages
      */
