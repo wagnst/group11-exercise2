@@ -60,13 +60,13 @@ public class TestAmount {
         Amount amount7 = new Amount(100000, Currencies.YEN);
         Amount amount8 = new Amount(135686, Currencies.RUBEL);
 
-        assertEquals(amount3.toLong(), (amount1.add(amount2)).toLong());
-        assertEquals(amount5.toLong(), (amount1.add(amount4)).toLong());
-        assertEquals(amount8.toLong(), (amount6.add(amount7)).toLong());
+        assertEquals(amount3, (amount1.add(amount2)));
+        assertEquals(amount5, (amount1.add(amount4)));
+        assertEquals(amount8, (amount6.add(amount7)));
 
-        assertEquals(amount1.toLong(), (amount3.subtract(amount2)).toLong());
-        assertEquals(amount1.toLong(), (amount5.subtract(amount4)).toLong());
-        assertEquals(amount6.toLong(), (amount8.subtract(amount7)).toLong());
+        assertEquals(amount1, (amount3.subtract(amount2)));
+        assertEquals(amount1, (amount5.subtract(amount4)));
+        assertEquals(amount6, (amount8.subtract(amount7)));
     }
 
     @Test
