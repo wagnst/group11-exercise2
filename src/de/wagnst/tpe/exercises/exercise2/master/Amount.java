@@ -87,7 +87,7 @@ public final class Amount {
     }
 
     /**
-     * pr�ft ob der Betrag positiv ist
+     * prüft ob der Betrag positiv ist
      *
      * @return +1 = Betrag >= 0 ; -1 = Betrag < 0
      */
