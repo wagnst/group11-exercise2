@@ -25,7 +25,7 @@ public class TestAccount {
         Amount test1 = new Amount(100, Currencies.EURO);
 
         steffen.post(test1);
-        assertEquals("100,00 €", steffen.returnElementInHistory(0).toString());
+        assertEquals("100 €", steffen.returnElementInHistory(0).toString());
 
     }
 
@@ -42,16 +42,6 @@ public class TestAccount {
     }
 
     @Test
-    public void testGetCurrency() throws Exception {
-
-    }
-
-    @Test
-    public void testGetOwner() throws Exception {
-
-    }
-
-    @Test
     public void testAccountFee() throws Exception {
 
     }
@@ -60,12 +50,12 @@ public class TestAccount {
     public void testReturnAccountHistory() throws Exception {
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
         Amount test1 = new Amount(100, Currencies.EURO);
-        Amount test2 = new Amount(100, Currencies.EURO);
+        Amount test2 = new Amount(100, Currencies.DOLLAR);
 
         steffen.post(test1);
         steffen.post(test2);
 
-        assertEquals("100.00 €\n100.00€",steffen.returnAccountHistory());
+        assertEquals("100 €\n100 $\n",steffen.returnAccountHistory());
     }
 
     @Test
@@ -76,6 +66,12 @@ public class TestAccount {
         steffen.post(test1);
         steffen.post(test2);
 
-        assertEquals("Owner: Steffen Wagner\nCurrency: Euro\n---------\n" + steffen.returnAccountHistory() +"\n---------\nSaldo: " + steffen.total(), steffen.toString());
+        assertEquals("Owner: " + steffen.getOwner() + "\n" +
+                     "Currency: " + steffen.getCurrency().getName() + "\n" +
+                     "---------" + "\n" +
+                     steffen.returnAccountHistory() +
+                     "---------" + "\n" +
+                     "Saldo: " + steffen.total().toString()
+                ,steffen.toString());
     }
 }
