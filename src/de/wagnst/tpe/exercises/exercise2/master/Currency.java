@@ -117,10 +117,15 @@ public final class Currency {
      * @param o zu verlgeichendes Objekt
      *
      * @return boolean
+     * @override
      */
     public boolean equals(Object o) {
-        if (o instanceof Currency) {
-            return this.toString().equals(o.toString());
+        if (o == null) {
+            return false;
+        }
+        else if (o instanceof Currency) {
+            return (this.name.equals(((Currency) o).getName())) && this.code.equals(((Currency)o).getCode()) && 
+                    this.exchangeRate == ((Currency)o).getExchangeRate() && (this.subunit == ((Currency) o).hasSubunit());
         } else {
             return false;
         }
