@@ -8,9 +8,6 @@ import static org.junit.Assert.*;
 
 public class TestCurrency {
 
-    /**
-     * Testet ob Rückgabestring im korrekten Format ist
-     */
     @Test
     public void testToString() {
         // regular ExchangeRates
@@ -28,28 +25,19 @@ public class TestCurrency {
                 higherExchangeRate.toString());
     }
 
-    /**
-     * Testet die .equals Methode
-     */
     @Test
     public void testEquals() {
         assertTrue(Currencies.DOLLAR.equals(Currencies.DOLLAR));
         assertFalse(Currencies.DOLLAR.equals(Currencies.EURO));
     }
 
-    /**
-     * Testet die .hashCode Methode
-     */
     @Test
     public void testHashCode() {
-        assertEquals(1086556191, Currencies.DOLLAR.hashCode());
         assertEquals(Currencies.DOLLAR.hashCode(), Currencies.DOLLAR.hashCode());
-        assertFalse(Currencies.DOLLAR.hashCode() == Currencies.EURO.hashCode());
+        assertEquals(Currencies.EURO.hashCode(), Currencies.EURO.hashCode());
+        assertFalse(Currencies.YEN.hashCode() == Currencies.EURO.hashCode());
     }
 
-    /**
-     * Testet convert Methode
-     */
     @Test
     public void testConvert() {
         // Dollar
