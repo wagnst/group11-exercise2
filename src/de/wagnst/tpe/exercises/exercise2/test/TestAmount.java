@@ -25,9 +25,9 @@ public class TestAmount {
         Amount amount2 = new Amount(0.01, Currencies.EURO);
         Amount amount3 = new Amount(12.993, Currencies.EURO);
 
-        assertEquals(1000, amount1.toLong());
-        assertEquals(1, amount2.toLong());
-        assertEquals(1299, amount3.toLong());
+        assertEquals(100000, amount1.toLong());
+        assertEquals(100, amount2.toLong());
+        assertEquals(129900, amount3.toLong());
     }
 
     @Test
@@ -95,8 +95,8 @@ public class TestAmount {
     public void testToLong() {
         Amount amount1 = new Amount(10.00, Currencies.EURO);
 
-        assertNotEquals(10000, amount1.toLong());
-        assertEquals(1000, amount1.toLong());
+        assertNotEquals(1000, amount1.toLong());
+        assertEquals(100000, amount1.toLong());
 
     }
 
@@ -108,6 +108,22 @@ public class TestAmount {
         assertEquals(10.00, amount1.toDouble(), 0.001); //0.001 fuzz factor for not exactly equal
         assertEquals(10.50, amount2.toDouble(), 0.001); //0.001 fuzz factor for not exactly equal
         assertEquals(10.5, amount2.toDouble(), 0.001); //0.001 fuzz factor for not exactly equal
+
+    }
+
+    @Test
+    public void testToMultiplyDouble(){
+        Amount amount1 = new Amount(10.00, Currencies.EURO);
+        Amount amount2 = new Amount(100000, Currencies.EURO);
+        Amount amount3 = new Amount(-20.579896, Currencies.RUBEL);
+        Amount amount4 = new Amount(-205700, Currencies.RUBEL);
+        Amount amount5 = new Amount(3000, Currencies.EURO);
+        Amount amount6 = new Amount(-281397600,Currencies.RUBEL);
+
+        assertEquals(amount5, (amount1.multiply(0.3)));
+        assertEquals(amount5, (amount2.multiply(0.3)));
+        assertEquals(amount6, (amount3.multiply(1.368)));
+        assertEquals(amount6, (amount4.multiply(1.368)));
 
     }
 }
