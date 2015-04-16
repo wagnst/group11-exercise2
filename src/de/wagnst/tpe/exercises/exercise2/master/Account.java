@@ -35,6 +35,7 @@ public class Account {
      */
     public void post(Amount amount) {
         //add transaction to bank statement
+        //TODO: Test for wrong type of amount!!!
         this.accountHistory.add(amount);
     }
 
