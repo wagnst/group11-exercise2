@@ -105,9 +105,12 @@ public class TestAmount {
         Amount amount1 = new Amount(10000, Currencies.EURO);
         Amount amount2 = new Amount(10500, Currencies.EURO);
 
-        assertEquals(10.00, amount1.toDouble(), 0.001); //0.001 fuzz factor for not exactly equal
-        assertEquals(10.50, amount2.toDouble(), 0.001); //0.001 fuzz factor for not exactly equal
-        assertEquals(10.5, amount2.toDouble(), 0.001); //0.001 fuzz factor for not exactly equal
+        assertEquals(10.00, amount1.toDouble(), 0.001); // 0.001 fuzz factor for
+                                                        // not exactly equal
+        assertEquals(10.50, amount2.toDouble(), 0.001); // 0.001 fuzz factor for
+                                                        // not exactly equal
+        assertEquals(10.5, amount2.toDouble(), 0.001); // 0.001 fuzz factor for
+                                                       // not exactly equal
 
     }
 
