@@ -1,7 +1,6 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
 import java.util.Arrays;
-import java.text.DecimalFormat;
 
 public final class Currency {
 
@@ -61,7 +60,7 @@ public final class Currency {
      */
     
     private String convertToString(long exchangeRate) {
-        
+        return null;
     }
     /*
     private String convertToString(long exchangeRate) {
