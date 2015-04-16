@@ -35,6 +35,7 @@ public final class Currency {
      */
     public long convert(long amount, Currency toCurrency) {
 
+        //System.out.println(amount * this.exchangeRate / toCurrency.exchangeRate);
         return amount * this.exchangeRate / toCurrency.exchangeRate;
     }
 
