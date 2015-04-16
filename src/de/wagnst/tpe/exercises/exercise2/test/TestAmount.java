@@ -82,10 +82,10 @@ public class TestAmount {
         Amount amount8 = new Amount(13.56, Currencies.RUBEL);
 
         assertEquals(amount3, (amount1.add(amount2)));
-        assertEquals(amount5, (amount1.add(amount4)));
+        assertEquals(amount5, (amount1.add(amount4)).toDouble());
         assertEquals(amount8, (amount6.add(amount7)));
 
-        assertEquals(amount1, (amount3.subtract(amount2)));
+        assertEquals(amount1, (amount3.subtract(amount2)).toDouble());
         assertEquals(amount1, (amount5.subtract(amount4)));
         assertEquals(amount6, (amount8.subtract(amount7)));
 

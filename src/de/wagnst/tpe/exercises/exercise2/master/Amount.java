@@ -9,20 +9,16 @@ public final class Amount {
 
     private long amount;
     private Currency currency;
-    // chop ist für zwei Nachkommastellen
-    private boolean chop;
 
     public Amount(long amount, Currency currency) {
 
         this.amount = amount;
         this.currency = currency;
-        this.chop = false;
     }
 
     public Amount(double amount, Currency currency) {
-        // chop amount after second decimal digit
+
         this(((long) (amount * 100)) * 100, currency);
-        this.chop = true;
     }
 
     /**
@@ -85,12 +81,7 @@ public final class Amount {
         if (this.amount < 0) {
             result = this.amount * -1;
         }
-        if (!this.chop) {
-            // chop 3rd and 4th digit
-            return result / 100;
-        } else {
             return result;
-        }
     }
 
     /**
@@ -110,15 +101,10 @@ public final class Amount {
     /**
      * Gibt Information über die Höhe des gespeicherten Betrages
      *
-     * @return double amount, mit zwei Nachkommastellen, immer positiv
+     * @return double amount, mit zwei Nachkommastellen
      */
     public double toDouble() {
-        if (!this.chop) {
-            // chop 3rd and 4th digit
-            return (double) this.amount / 1000;
-        } else {
-            return (double) this.amount;
-        }
+            return (double) (this.amount / 100)/100;
     }
 
     /**
