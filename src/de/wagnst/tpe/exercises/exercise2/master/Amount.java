@@ -1,9 +1,9 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
 /**
- * LOREM IPSUM
+ * Class to make arithmetic operation with the Amounts
  *
- * @author Rathainka, wagnst, maxGross
+ * @author Katharina
  */
 public final class Amount {
 
@@ -24,8 +24,8 @@ public final class Amount {
     /**
      * Addiert zwei Beträge, die Währung des ersten Betrages wird beibehalten
      *
-     * @param other
-     *            , zu addierender Betrag
+     * @param other , zu addierender Betrag
+     *
      * @return Summe der beiden Beträge
      */
     public Amount add(Amount other) {
@@ -42,8 +42,8 @@ public final class Amount {
      * Subtrahiere zwei Beträge, die Währung des ersten Betrages wird
      * beibehalten
      *
-     * @param other
-     *            , zu subtrahierender Betrag
+     * @param other , zu subtrahierender Betrag
+     *
      * @return Differenz der beiden Beträge
      */
     public Amount subtract(Amount other) {
@@ -58,7 +58,7 @@ public final class Amount {
     }
 
     public Amount multiply(double factor) {
-        return new Amount(((this.amount * (long) (factor * 100)/1000) ),
+        return new Amount((toDouble(this.amount) * factor),
                 this.currency);
     }
 
@@ -67,21 +67,20 @@ public final class Amount {
     }
 
     public Amount percentage(int percent) {
-        return null;
+        return new Amount(this.amount * percent / 100, this.currency);
     }
 
     /**
-     * Gibt Information über die Höhe des gespeicherten Betrages
+     * Turns back the height of the saved amount
      *
-     * @return long amount, mit zwei Nachkommastellen, immer positiv
+     * @return long amount, with two decimal place, always positive
      */
     public long toLong() {
         long result = this.amount;
-        // turn a negative into a positiv long value
         if (this.amount < 0) {
             result = this.amount * -1;
         }
-            return result;
+        return result / 100;
     }
 
     /**
@@ -102,9 +101,10 @@ public final class Amount {
      * Gibt Information über die Höhe des gespeicherten Betrages
      *
      * @return double amount, mit zwei Nachkommastellen
+     * @param amount
      */
-    public double toDouble() {
-            return (double) (this.amount / 100)/100;
+    public double toDouble(long amount) {
+        return ((double) (amount / 100)) / 100;
     }
 
     /**
@@ -119,8 +119,8 @@ public final class Amount {
     /**
      * Converts current currency to a new currency
      *
-     * @param toCurrency
-     *            new currency
+     * @param toCurrency new currency
+     *
      * @return converted currency with amount
      */
     public Amount convertToCurrency(Currency toCurrency) {
@@ -130,9 +130,12 @@ public final class Amount {
 
     @Override
     public String toString() {
-        // Todo: needs to check which currency it is and return corresponding
         // amount (with or without comma)
-        return this.amount + " " + this.currency.getCode();
+        if(this.currency.getName() != "Yen")
+        return toDouble(this.amount) + " " + this.currency.getCode();
+            else {
+            return (this.amount / 10000) + " " + this.currency.getCode();
+        }
     }
 
     @Override
