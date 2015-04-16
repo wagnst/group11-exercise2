@@ -123,10 +123,13 @@ public final class Amount {
         return this.currency;
     }
 
+    @Override
     public String toString() {
-        return null;
+        //Todo: needs to check which currency it is and return corresponding amount (with or without comma)
+        return this.amount + " " + this.currency.getCode() ;
     }
 
+    @Override
     public int hashCode() {
         return 0;
     }
