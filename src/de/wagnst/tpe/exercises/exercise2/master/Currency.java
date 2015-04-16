@@ -99,7 +99,8 @@ public final class Currency {
      * generates hashcode based on class arrays
      */
     public int hashCode() {
-        return Arrays.hashCode(new double[] { this.exchangeRate });
+        return Arrays.hashCode(new double[] { this.exchangeRate,
+                String.valueOf(this.name).length() });
     }
 
     /**
