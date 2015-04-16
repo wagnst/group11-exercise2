@@ -63,7 +63,8 @@ public class TestAccount {
         steffen.post(test4);
         assertEquals("1000 €\n788 €\n788 €\n7 €\n", steffen
                 .getStringAccountHistory
-                ());
+                        ());
+
     }
 
     @Test
@@ -81,5 +82,6 @@ public class TestAccount {
                 "---------" + "\n" +
                 "Saldo: " + steffen.total().toString()
                 , steffen.toString());
+        
     }
 }
