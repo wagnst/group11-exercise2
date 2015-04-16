@@ -45,7 +45,7 @@ public class Account {
 
     public String returnAccountHistory() {
         String history = "";
-        for (int i=0; i < this.accountHistory.size(); i++) {
+        for (int i = 0; i < this.accountHistory.size(); i++) {
             history += this.accountHistory.get(i) + "\n";
         }
         return history;
@@ -58,7 +58,7 @@ public class Account {
      * @return sum of transactions
      */
     public Amount total() {
-        Amount sum = new Amount(0,this.currency);
+        Amount sum = new Amount(0, this.currency);
         for (int i = 0; i < this.accountHistory.size() - 1; i++) {
             switch (this.accountHistory.get(i).getSign()) {
                 //positive

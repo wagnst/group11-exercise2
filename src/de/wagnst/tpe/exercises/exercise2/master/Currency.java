@@ -24,7 +24,6 @@ public final class Currency {
      *
      * @param amount     amount to convert
      * @param toCurrency currency to convert to
-     *
      * @return converted amount
      */
     public long convert(long amount, Currency toCurrency) {
@@ -55,10 +54,9 @@ public final class Currency {
      * converts exchange rate into string
      *
      * @param exchangeRate exchange rate : dollar
-     *
-     * @return string exchange rate 
+     * @return string exchange rate
      */
-    
+
     private String convertToString(long exchangeRate) {
         return null;
     }
@@ -98,6 +96,7 @@ public final class Currency {
         return "" + infrontOf + "," + behindOf;
     }
 */
+
     /**
      * @return String im gewünschten Format
      */
@@ -119,17 +118,15 @@ public final class Currency {
      * Prüft zwei Objekte auf Gleichheit
      *
      * @param o zu verlgeichendes Objekt
-     *
      * @return boolean
      * @override
      */
     public boolean equals(Object o) {
         if (o == null) {
             return false;
-        }
-        else if (o instanceof Currency) {
-            return (this.name.equals(((Currency) o).getName())) && this.code.equals(((Currency)o).getCode()) && 
-                    this.exchangeRate == ((Currency)o).getExchangeRate() && (this.subunit == ((Currency) o).hasSubunit());
+        } else if (o instanceof Currency) {
+            return (this.name.equals(((Currency) o).getName())) && this.code.equals(((Currency) o).getCode()) &&
+                    this.exchangeRate == ((Currency) o).getExchangeRate() && (this.subunit == ((Currency) o).hasSubunit());
         } else {
             return false;
         }

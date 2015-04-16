@@ -112,13 +112,13 @@ public class TestAmount {
     }
 
     @Test
-    public void testToMultiplyDouble(){
+    public void testToMultiplyDouble() {
         Amount amount1 = new Amount(10.00, Currencies.EURO);
         Amount amount2 = new Amount(100000, Currencies.EURO);
         Amount amount3 = new Amount(-20.579896, Currencies.RUBEL);
         Amount amount4 = new Amount(-205700, Currencies.RUBEL);
         Amount amount5 = new Amount(3000, Currencies.EURO);
-        Amount amount6 = new Amount(-281397600,Currencies.RUBEL);
+        Amount amount6 = new Amount(-281397600, Currencies.RUBEL);
 
         assertEquals(amount5, (amount1.multiply(0.3)));
         assertEquals(amount5, (amount2.multiply(0.3)));

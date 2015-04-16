@@ -55,7 +55,7 @@ public class TestAccount {
         steffen.post(test1);
         steffen.post(test2);
 
-        assertEquals("100 €\n100 $\n",steffen.returnAccountHistory());
+        assertEquals("100 €\n100 $\n", steffen.returnAccountHistory());
     }
 
     @Test
@@ -67,11 +67,11 @@ public class TestAccount {
         steffen.post(test2);
 
         assertEquals("Owner: " + steffen.getOwner() + "\n" +
-                     "Currency: " + steffen.getCurrency().getName() + "\n" +
-                     "---------" + "\n" +
-                     steffen.returnAccountHistory() +
-                     "---------" + "\n" +
-                     "Saldo: " + steffen.total().toString()
-                ,steffen.toString());
+                "Currency: " + steffen.getCurrency().getName() + "\n" +
+                "---------" + "\n" +
+                steffen.returnAccountHistory() +
+                "---------" + "\n" +
+                "Saldo: " + steffen.total().toString()
+                , steffen.toString());
     }
 }

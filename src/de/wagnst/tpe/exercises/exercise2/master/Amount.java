@@ -24,7 +24,6 @@ public final class Amount {
      * Addiert zwei Beträge, die Währung des ersten Betrages wird beibehalten
      *
      * @param other , zu addierender Betrag
-     *
      * @return Summe der beiden Beträge
      */
     public Amount add(Amount other) {
@@ -42,7 +41,6 @@ public final class Amount {
      * beibehalten
      *
      * @param other , zu subtrahierender Betrag
-     *
      * @return Differenz der beiden Beträge
      */
     public Amount subtract(Amount other) {
@@ -58,7 +56,7 @@ public final class Amount {
 
 
     public Amount multiply(double factor) {
-        return new Amount((this.amount * (((long) factor))*100), this.currency);
+        return new Amount((this.amount * (((long) factor)) * 100), this.currency);
     }
 
 
@@ -129,7 +127,7 @@ public final class Amount {
     @Override
     public String toString() {
         //Todo: needs to check which currency it is and return corresponding amount (with or without comma)
-        return this.amount + " " + this.currency.getCode() ;
+        return this.amount + " " + this.currency.getCode();
     }
 
     @Override
