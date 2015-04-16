@@ -4,7 +4,7 @@ package de.wagnst.tpe.exercises.exercise2.master;
  * enthält vorgefertigte Objekte von Währungen mit den jeweiligen Wechselkursen,
  * damit man diese einfach innerhalb des Programms wiederverwenden kann.
  *
- * @author maxGross
+ * @author maxGross, wagnst
  */
 public final class Currencies {
 

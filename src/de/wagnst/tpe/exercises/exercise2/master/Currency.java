@@ -2,6 +2,11 @@ package de.wagnst.tpe.exercises.exercise2.master;
 
 import java.util.Arrays;
 
+/**
+ * LOREM IPSUM
+ *
+ * @author maxGross
+ */
 public final class Currency {
 
     private String name;
