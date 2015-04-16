@@ -55,7 +55,11 @@ public class Account {
     public void accountFee(int promills) {
     }
 
+    @Override
     public String toString() {
-        return null;
+        return "Account{" +
+                "currency=" + currency +
+                ", owner='" + owner + '\'' +
+                '}';
     }
 }
