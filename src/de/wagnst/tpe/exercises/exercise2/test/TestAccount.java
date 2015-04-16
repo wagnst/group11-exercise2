@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class TestAccount {
 
     @Test
-    public void testAccountCreation() throws Exception {
+    public void testAccountCreation() {
 
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
 
@@ -20,7 +20,7 @@ public class TestAccount {
     }
 
     @Test
-    public void testPost() throws Exception {
+    public void testPost() {
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
         Amount test1 = new Amount(100, Currencies.EURO);
 
@@ -30,7 +30,7 @@ public class TestAccount {
     }
 
     @Test
-    public void testTotal() throws Exception {
+    public void testTotal() {
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
         Amount test1 = new Amount(100, Currencies.EURO);
         Amount test2 = new Amount(100, Currencies.EURO);
@@ -42,24 +42,32 @@ public class TestAccount {
     }
 
     @Test
-    public void testAccountFee() throws Exception {
+    public void testAccountFee() {
 
     }
 
     @Test
-    public void testReturnAccountHistory() throws Exception {
+    public void testReturnAccountHistory() {
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
-        Amount test1 = new Amount(100, Currencies.EURO);
-        Amount test2 = new Amount(100, Currencies.DOLLAR);
+        Amount test1 = new Amount(1000, Currencies.EURO);
+        Amount test2 = new Amount(1000, Currencies.DOLLAR);
+        Amount test3 = new Amount(1000, Currencies.DOLLAR);
+        Amount test4 = new Amount(1000, Currencies.YEN);
 
         steffen.post(test1);
         steffen.post(test2);
-
-        assertEquals("100 €\n100 $\n", steffen.returnAccountHistory());
+        assertEquals("1000 €\n788 €\n", steffen.getStringAccountHistory());
+        steffen.post(test3);
+        assertEquals("1000 €\n788 €\n788 €\n", steffen.getStringAccountHistory
+                ());
+        steffen.post(test4);
+        assertEquals("1000 €\n788 €\n788 €\n7 €\n", steffen
+                .getStringAccountHistory
+                ());
     }
 
     @Test
-    public void testToString() throws Exception {
+    public void testToString() {
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
         Amount test1 = new Amount(100, Currencies.EURO);
         Amount test2 = new Amount(100, Currencies.DOLLAR);
@@ -69,7 +77,7 @@ public class TestAccount {
         assertEquals("Owner: " + steffen.getOwner() + "\n" +
                 "Currency: " + steffen.getCurrency().getName() + "\n" +
                 "---------" + "\n" +
-                steffen.returnAccountHistory() +
+                steffen.getStringAccountHistory() +
                 "---------" + "\n" +
                 "Saldo: " + steffen.total().toString()
                 , steffen.toString());
