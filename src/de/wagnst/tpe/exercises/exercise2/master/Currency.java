@@ -1,6 +1,7 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
 import java.util.Arrays;
+import java.text.DecimalFormat;
 
 public final class Currency {
 
@@ -20,12 +21,12 @@ public final class Currency {
     }
 
     /**
-     * Konvertiert den gewünschten Betrag in die angegebene Währung
+     * converts amount into other currency
      *
-     * @param amount     zu konvertierender Betrag
-     * @param toCurrency in zu konvertierende Währung
+     * @param amount     amount to convert
+     * @param toCurrency currency to convert to
      *
-     * @return Konvertierter Betrag
+     * @return converted amount
      */
     public long convert(long amount, Currency toCurrency) {
 
@@ -52,15 +53,19 @@ public final class Currency {
     }
 
     /**
-     * Wandelt Wechselkurs in Funschformat euro,cent um; Ohne Verlust durch
-     * Rundungsfehler
+     * converts exchange rate into string
      *
-     * @param exchangeRate Wechselkurs zum Dollar Ganzzahl
+     * @param exchangeRate exchange rate : dollar
      *
-     * @return Wechselkurs codiert als String
+     * @return string exchange rate 
      */
+    
     private String convertToString(long exchangeRate) {
-        // at least one digit infront of the decimal point (this.digit + 1)
+        
+    }
+    /*
+    private String convertToString(long exchangeRate) {
+        // at least one digit in front of the decimal point (this.digit + 1)
         int arraySize = this.digit + 1;
         String infrontOf = "";
         String behindOf = "";
@@ -93,7 +98,7 @@ public final class Currency {
 
         return "" + infrontOf + "," + behindOf;
     }
-
+*/
     /**
      * @return String im gewünschten Format
      */
