@@ -28,7 +28,8 @@ public final class Amount {
     /**
      * Addiert zwei Beträge, die Währung des ersten Betrages wird beibehalten
      *
-     * @param other , zu addierender Betrag
+     * @param other
+     *            , zu addierender Betrag
      * @return Summe der beiden Beträge
      */
     public Amount add(Amount other) {
@@ -45,7 +46,8 @@ public final class Amount {
      * Subtrahiere zwei Beträge, die Währung des ersten Betrages wird
      * beibehalten
      *
-     * @param other , zu subtrahierender Betrag
+     * @param other
+     *            , zu subtrahierender Betrag
      * @return Differenz der beiden Beträge
      */
     public Amount subtract(Amount other) {
@@ -59,11 +61,10 @@ public final class Amount {
         }
     }
 
-
     public Amount multiply(double factor) {
-        return new Amount((this.amount * (((long) factor)) * 100), this.currency);
+        return new Amount(((this.amount * (long) (factor * 100)/1000) ),
+                this.currency);
     }
-
 
     public Amount multiply(int factor) {
         return new Amount((this.amount * factor), this.currency);
@@ -132,7 +133,8 @@ public final class Amount {
     /**
      * Converts current currency to a new currency
      *
-     * @param toCurrency new currency
+     * @param toCurrency
+     *            new currency
      * @return converted currency with amount
      */
     public Amount convertToCurrency(Currency toCurrency) {
@@ -142,7 +144,8 @@ public final class Amount {
 
     @Override
     public String toString() {
-        //Todo: needs to check which currency it is and return corresponding amount (with or without comma)
+        // Todo: needs to check which currency it is and return corresponding
+        // amount (with or without comma)
         return this.amount + " " + this.currency.getCode();
     }
 
@@ -154,7 +157,7 @@ public final class Amount {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Amount) {
-            //return true if amount and currency is equal. ignore chop!
+            // return true if amount and currency is equal. ignore chop!
             return ((((Amount) obj).amount == this.amount) && (((Amount) obj).currency == this.currency));
         }
         return false;
