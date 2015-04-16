@@ -13,7 +13,6 @@ public final class Currency {
     private String code;
     private long exchangeRate;
     private boolean subunit;
-
     // accuracy after the decimal point
     private int digit = 4;
 
@@ -27,16 +26,16 @@ public final class Currency {
     /**
      * converts amount into other currency
      *
-     * @param amount     amount to convert
-     * @param toCurrency currency to convert to
+     * @param amount
+     *            amount to convert
+     * @param toCurrency
+     *            currency to convert into
+     *
      * @return converted amount
      */
     public long convert(long amount, Currency toCurrency) {
 
-        amount *= this.exchangeRate;
-
-        return amount / toCurrency.exchangeRate;
-
+        return amount * this.exchangeRate / toCurrency.exchangeRate;
     }
 
     public long getExchangeRate() {
@@ -56,54 +55,38 @@ public final class Currency {
     }
 
     /**
-     * converts exchange rate into string
-     *
-     * @param exchangeRate exchange rate : dollar
-     * @return string exchange rate
+     * adds missing zeroes for exchange rate Format "#,####"
      */
+    private String fill() {
+        String result = ",";
+        // count how many zeroes to add
+        long behind = this.exchangeRate % (long) Math.pow(10, this.digit);
+        long count = this.digit - String.valueOf(behind).length();
 
-    private String convertToString(long exchangeRate) {
-        return null;
+        for (int i = 0; i < count; i++) {
+            result += "0";
+        }
+        return result;
     }
-    /*
-    private String convertToString(long exchangeRate) {
-        // at least one digit in front of the decimal point (this.digit + 1)
-        int arraySize = this.digit + 1;
-        String infrontOf = "";
-        String behindOf = "";
-
-        // get the array size for all digits; save this at arraySize
-        while ((exchangeRate / (int) Math.pow(10, arraySize)) > 0) {
-            arraySize++;
-        }
-        long[] digit = new long[arraySize];
-
-        // digits get set into the array
-        for (int i = arraySize - 1; i >= 0; i--) {
-            digit[i] = exchangeRate % 10;
-            exchangeRate /= 10;
-        }
-        int euroPointer = 0;
-        int centPointer = arraySize - this.digit;
-
-        // create String with all digits in front of the decimal point
-        while (euroPointer < centPointer) {
-            infrontOf += digit[euroPointer];
-            euroPointer++;
-        }
-
-        // create String with all digits behind the decimal point
-        while ((centPointer) < digit.length) {
-            behindOf += digit[centPointer];
-            centPointer++;
-        }
-
-        return "" + infrontOf + "," + behindOf;
-    }
-*/
 
     /**
-     * @return String im gewünschten Format
+     * converts exchange rate into string
+     *
+     * @param exchangeRate
+     *            exchange rate : dollar
+     *
+     * @return string exchange rate
+     */
+    private String convertToString(long exchangeRate) {
+
+        long behind = this.exchangeRate % (long) Math.pow(10, this.digit);
+        long infront = this.exchangeRate / (long) Math.pow(10, this.digit);
+
+        return "" + infront + fill() + behind;
+    }
+
+    /**
+     * @return String of the currency
      */
     public String toString() {
 
@@ -113,16 +96,18 @@ public final class Currency {
     }
 
     /**
-     * Erzeugt hashCode für das Objekt
+     * generates hashcode based on class arrays
      */
     public int hashCode() {
-        return Arrays.hashCode(new double[]{this.exchangeRate});
+        return Arrays.hashCode(new double[] { this.exchangeRate });
     }
 
     /**
-     * Prüft zwei Objekte auf Gleichheit
+     * compares if two objects are equal
      *
-     * @param o zu verlgeichendes Objekt
+     * @param o
+     *            object to compare
+     *
      * @return boolean
      * @override
      */
@@ -130,8 +115,10 @@ public final class Currency {
         if (o == null) {
             return false;
         } else if (o instanceof Currency) {
-            return (this.name.equals(((Currency) o).getName())) && this.code.equals(((Currency) o).getCode()) &&
-                    this.exchangeRate == ((Currency) o).getExchangeRate() && (this.subunit == ((Currency) o).hasSubunit());
+            return (this.name.equals(((Currency) o).getName()))
+                    && this.code.equals(((Currency) o).getCode())
+                    && this.exchangeRate == ((Currency) o).getExchangeRate()
+                    && (this.subunit == ((Currency) o).hasSubunit());
         } else {
             return false;
         }
