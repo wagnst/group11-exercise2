@@ -7,7 +7,7 @@ import java.util.List;
  * Account manages bookings of money to an account. Every account has an owner
  * as well as a currency
  *
- * @author wagnst / d059727
+ * @author wagnst
  */
 
 public class Account {
@@ -35,7 +35,9 @@ public class Account {
      */
     public void post(Amount amount) {
         //add transaction to bank statement
-        //TODO: Test for wrong type of amount!!!
+        if (!this.currency.equals(amount.getCurrency())) {
+            amount = amount.convertToCurrency(this.currency);
+        }
         this.accountHistory.add(amount);
     }
 
@@ -43,12 +45,27 @@ public class Account {
         return this.accountHistory.get(e);
     }
 
-    public String returnAccountHistory() {
+    /**
+     * Gives all historical bank transfers as a simple string
+     * Used for the toString method for printing the transaction history
+     *
+     * @return bank history as string
+     */
+    public String getStringAccountHistory() {
         String history = "";
         for (int i = 0; i < this.accountHistory.size(); i++) {
             history += this.accountHistory.get(i) + "\n";
         }
         return history;
+    }
+
+    /**
+     * Gives all historical bank transfers in original format
+     *
+     * @return bank history as Array List
+     */
+    public List<Amount> getArrayAccountHistory() {
+        return this.accountHistory;
     }
 
     /**
@@ -86,9 +103,9 @@ public class Account {
      * set of fees which are charged to the account (product of saldo and
      * promills)
      *
-     * @param promills
+     * @param percentage percentage of due for the bank
      */
-    public void accountFee(int promills) {
+    public void accountFee(int percentage) {
         //ToDo: implementation
     }
 
@@ -97,7 +114,7 @@ public class Account {
         return "Owner: " + this.owner + "\n" +
                 "Currency: " + this.currency.getName() + "\n" +
                 "---------" + "\n" +
-                returnAccountHistory() +
+                getStringAccountHistory() +
                 "---------" + "\n" +
                 "Saldo: " + total().toString();
     }
