@@ -1,5 +1,10 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
+/**
+ * LOREM IPSUM
+ *
+ * @author Rathainka, wagnst, maxGross
+ */
 public final class Amount {
 
     private long amount;
@@ -122,6 +127,17 @@ public final class Amount {
      */
     public Currency getCurrency() {
         return this.currency;
+    }
+
+    /**
+     * Converts current currency to a new currency
+     *
+     * @param toCurrency new currency
+     * @return converted currency with amount
+     */
+    public Amount convertToCurrency(Currency toCurrency) {
+        return new Amount(this.currency.convert(this.amount, toCurrency),
+                toCurrency);
     }
 
     @Override
