@@ -52,7 +52,7 @@ public class Account {
 
     /**
      * Show saldo of account (sum of all transactions). Decide if elements need
-     * to be added or substracted
+     * to be added or substracted. Start with total of zero.
      *
      * @return sum of transactions
      */
