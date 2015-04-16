@@ -44,7 +44,7 @@ public class Account {
 
     public String returnAccountHistory() {
         String history = "";
-        for (int i=0; i<this.accountHistory.size(); i++) {
+        for (int i=0; i < this.accountHistory.size(); i++) {
             history += this.accountHistory.get(i) + "\n";
         }
         return history;
@@ -88,15 +88,16 @@ public class Account {
      * @param promills
      */
     public void accountFee(int promills) {
+        //ToDo: implementation
     }
 
     @Override
     public String toString() {
-        return "Owner: " + this.owner + '\'' +
-                "Currency: " + this.currency.getName() + '\'' +
-                "---------" + '\'' +
-                this.accountHistory.toString() +
-                "---------" + '\'' +
+        return "Owner: " + this.owner + "\n" +
+                "Currency: " + this.currency.getName() + "\n" +
+                "---------" + "\n" +
+                returnAccountHistory() +
+                "---------" + "\n" +
                 "Saldo: " + total().toString();
     }
 
