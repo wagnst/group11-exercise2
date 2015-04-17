@@ -120,6 +120,9 @@ public class TestAmount {
         Amount amountYen = new Amount(1000.05, Currencies.YEN);
         Amount amountRubel = new Amount(0.00, Currencies.RUBEL);
         Amount amountChf = new Amount(99.99, Currencies.CHF);
+        
+        // Amount mit -15 wird nicht korrekt angelegt!!
+        // vier nullen dazu, siehe unten und der Test ist korrekt?!
         Amount spez = new Amount(-150000, Currencies.DOLLAR);
 
         Amount a = new Amount(30000, Currencies.DOLLAR);
