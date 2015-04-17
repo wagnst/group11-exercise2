@@ -3,7 +3,9 @@ package de.wagnst.tpe.exercises.exercise2.master;
 import java.util.Arrays;
 
 /**
- * LOREM IPSUM
+ * Currency manages special operations on existing Currencies. Every Currency
+ * has a name, code, exchange rate and an information if it got a subunit
+ * 
  *
  * @author maxGross
  */
