@@ -120,18 +120,21 @@ public class TestAmount {
         Amount amountYen = new Amount(1000.05, Currencies.YEN);
         Amount amountRubel = new Amount(0.00, Currencies.RUBEL);
         Amount amountChf = new Amount(99.99, Currencies.CHF);
+        Amount spez = new Amount(-150000, Currencies.DOLLAR);
 
-        Amount a = new Amount(3.0, Currencies.DOLLAR);
+        Amount a = new Amount(30000, Currencies.DOLLAR);
         Amount b = new Amount(-3300, Currencies.EURO);
         Amount c = new Amount(-1500.07, Currencies.YEN);
         Amount d = new Amount(0.0, Currencies.RUBEL);
         Amount e = new Amount(0, Currencies.CHF);
+        Amount f = new Amount(-35.64, Currencies.DOLLAR);
 
         assertEquals(a, amountDollar.multiply(0.3));
         assertEquals(b, amountEuro.multiply(33));
         assertEquals(c, amountYen.multiply(-1.5));
         assertEquals(d, amountRubel.multiply(99.99));
         assertEquals(e, amountChf.multiply(0));
+        assertEquals(f, spez.multiply(2.376));
     }
 
     @Test
