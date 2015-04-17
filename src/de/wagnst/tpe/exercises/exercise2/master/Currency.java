@@ -14,7 +14,7 @@ public final class Currency {
     private long exchangeRate;
     private boolean subunit;
     // accuracy after the decimal point
-    private int digit = 4;
+    private int accurancy = 4;
 
     public Currency(String name, String code, long exchangeRate, boolean subunit) {
         this.name = name;
@@ -35,7 +35,6 @@ public final class Currency {
      */
     public long convert(long amount, Currency toCurrency) {
 
-        //System.out.println(amount * this.exchangeRate / toCurrency.exchangeRate);
         return amount * this.exchangeRate / toCurrency.exchangeRate;
     }
 
@@ -61,8 +60,8 @@ public final class Currency {
     private String fill() {
         String result = ",";
         // count how many zeroes to add
-        long behind = this.exchangeRate % (long) Math.pow(10, this.digit);
-        long count = this.digit - String.valueOf(behind).length();
+        long behind = this.exchangeRate % (long) Math.pow(10, this.accurancy);
+        long count = this.accurancy - String.valueOf(behind).length();
 
         for (int i = 0; i < count; i++) {
             result += "0";
@@ -80,8 +79,8 @@ public final class Currency {
      */
     private String convertToString(long exchangeRate) {
 
-        long behind = this.exchangeRate % (long) Math.pow(10, this.digit);
-        long infront = this.exchangeRate / (long) Math.pow(10, this.digit);
+        long behind = this.exchangeRate % (long) Math.pow(10, this.accurancy);
+        long infront = this.exchangeRate / (long) Math.pow(10, this.accurancy);
 
         return "" + infront + fill() + behind;
     }
@@ -97,7 +96,7 @@ public final class Currency {
     }
 
     /**
-     * generates hashcode based on class arrays
+     * generates hashcode based on class Arrays
      */
     public int hashCode() {
         return Arrays.hashCode(new double[] { this.exchangeRate,
