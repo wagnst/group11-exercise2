@@ -24,7 +24,8 @@ public final class Amount {
     /**
      * Addiert zwei Beträge, die Währung des ersten Betrages wird beibehalten
      *
-     * @param other , zu addierender Betrag
+     * @param other
+     *            , zu addierender Betrag
      *
      * @return Summe der beiden Beträge
      */
@@ -42,7 +43,8 @@ public final class Amount {
      * Subtrahiere zwei Beträge, die Währung des ersten Betrages wird
      * beibehalten
      *
-     * @param other , zu subtrahierender Betrag
+     * @param other
+     *            , zu subtrahierender Betrag
      *
      * @return Differenz der beiden Beträge
      */
@@ -58,8 +60,8 @@ public final class Amount {
     }
 
     public Amount multiply(double factor) {
-        return new Amount((toDouble(this.amount) * factor),
-                this.currency);
+
+        return new Amount((toDouble(this.amount) * factor), this.currency);
     }
 
     public Amount multiply(int factor) {
@@ -119,7 +121,8 @@ public final class Amount {
     /**
      * Converts current currency to a new currency
      *
-     * @param toCurrency new currency
+     * @param toCurrency
+     *            new currency
      *
      * @return converted currency with amount
      */
@@ -131,9 +134,9 @@ public final class Amount {
     @Override
     public String toString() {
         // amount (with or without comma)
-        if(this.currency.getName() != "Yen")
-        return toDouble(this.amount) + " " + this.currency.getCode();
-            else {
+        if (this.currency.getName() != "Yen")
+            return toDouble(this.amount) + " " + this.currency.getCode();
+        else {
             return (this.amount / 10000) + " " + this.currency.getCode();
         }
     }
