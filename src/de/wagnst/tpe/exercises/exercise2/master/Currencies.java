@@ -1,8 +1,8 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
 /**
- * enthält vorgefertigte Objekte von Währungen mit den jeweiligen Wechselkursen,
- * damit man diese einfach innerhalb des Programms wiederverwenden kann.
+ * contains defined objects of currency with its exchange rate to dollar,
+ * name, currency symbol and an information if it has a subunit 
  *
  * @author maxGross, wagnst
  */
