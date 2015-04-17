@@ -20,8 +20,8 @@ public class TestCurrency {
                 Currencies.CHF.toString());
 
         // rate with more than one digit in front of the decimal point
-        Currency higherExchangeRate = new Currency("Test", "?!", 1200000, false);
-        assertEquals("Test [?!] 1 $ = 120,0000 ?!",
+        Currency higherExchangeRate = new Currency("Test", "?!", 111111, false);
+        assertEquals("Test [?!] 1 $ = 11,1111 ?!",
                 higherExchangeRate.toString());
     }
 
@@ -42,55 +42,43 @@ public class TestCurrency {
     @Test
     public void testConvert() {
         // Dollar
+
         assertEquals(100000,
                 Currencies.DOLLAR.convert(100000, Currencies.DOLLAR));
         assertEquals(78802, Currencies.DOLLAR.convert(100000, Currencies.EURO));
         assertEquals(10989010,
                 Currencies.DOLLAR.convert(100000, Currencies.YEN));
         assertEquals(3921568,
-                Currencies.DOLLAR.convert(100000, Currencies.RUBEL) );
-        assertEquals(95156, Currencies.DOLLAR.convert(100000, Currencies.CHF)
-                );
+                Currencies.DOLLAR.convert(100000, Currencies.RUBEL));
+        assertEquals(95156, Currencies.DOLLAR.convert(100000, Currencies.CHF));
         // Euro
-        /*
+
         assertEquals(100000, Currencies.EURO.convert(100000, Currencies.EURO));
-        assertEquals(100000, Currencies.EURO.convert(78802, Currencies.DOLLAR),
-                0001);
-        assertEquals(13945055, Currencies.EURO.convert(100000, Currencies.YEN),
-                0001);
-        assertEquals(4976471,
-                Currencies.EURO.convert(100000, Currencies.RUBEL), 0001);
-        assertEquals(120754, Currencies.EURO.convert(100000, Currencies.CHF),
-                0001);
+        assertEquals(126900, Currencies.EURO.convert(100000, Currencies.DOLLAR));
+        assertEquals(13945054, Currencies.EURO.convert(100000, Currencies.YEN));
+        assertEquals(4976470, Currencies.EURO.convert(100000, Currencies.RUBEL));
+        assertEquals(120753, Currencies.EURO.convert(100000, Currencies.CHF));
+
         // Yen
         assertEquals(100000, Currencies.YEN.convert(100000, Currencies.YEN));
-        assertEquals(100000,
-                Currencies.YEN.convert(10989011, Currencies.DOLLAR), 0001);
-        assertEquals(100000, Currencies.YEN.convert(13945055, Currencies.EURO),
-                0001);
-        assertEquals(35686, Currencies.YEN.convert(100000, Currencies.RUBEL),
-                0001);
-        assertEquals(866, Currencies.YEN.convert(100000, Currencies.CHF), 0001);
+        assertEquals(910, Currencies.YEN.convert(100000, Currencies.DOLLAR));
+        assertEquals(717, Currencies.YEN.convert(100000, Currencies.EURO));
+        assertEquals(35686, Currencies.YEN.convert(100000, Currencies.RUBEL));
+        assertEquals(865, Currencies.YEN.convert(100000, Currencies.CHF));
+
         // Rubel
         assertEquals(100000, Currencies.RUBEL.convert(100000, Currencies.RUBEL));
-        assertEquals(100000,
-                Currencies.RUBEL.convert(3921569, Currencies.DOLLAR), 0001);
-        assertEquals(100000,
-                Currencies.RUBEL.convert(4976471, Currencies.EURO), 0001);
-        assertEquals(100000, Currencies.RUBEL.convert(35686, Currencies.YEN),
-                0001);
-        assertEquals(2426, Currencies.RUBEL.convert(100000, Currencies.CHF),
-                0001);
+        assertEquals(2550, Currencies.RUBEL.convert(100000, Currencies.DOLLAR));
+        assertEquals(2009, Currencies.RUBEL.convert(100000, Currencies.EURO));
+        assertEquals(280219, Currencies.RUBEL.convert(100000, Currencies.YEN));
+        assertEquals(2426, Currencies.RUBEL.convert(100000, Currencies.CHF));
+
         // Schweizer Franken
         assertEquals(100000, Currencies.CHF.convert(100000, Currencies.CHF));
-        assertEquals(100000, Currencies.CHF.convert(95157, Currencies.DOLLAR),
-                0001);
-        assertEquals(100000, Currencies.CHF.convert(120754, Currencies.EURO),
-                0001);
-        assertEquals(11548351, Currencies.CHF.convert(100000, Currencies.YEN),
-                0001);
-        assertEquals(4121176, Currencies.CHF.convert(100000, Currencies.RUBEL),
-                0001);
-                */
+        assertEquals(105090, Currencies.CHF.convert(100000, Currencies.DOLLAR));
+        assertEquals(82813, Currencies.CHF.convert(100000, Currencies.EURO));
+        assertEquals(11548351, Currencies.CHF.convert(100000, Currencies.YEN));
+        assertEquals(4121176, Currencies.CHF.convert(100000, Currencies.RUBEL));
+
     }
 }
