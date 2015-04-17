@@ -61,10 +61,15 @@ public final class Amount {
 
     public Amount multiply(double factor) {
 
+        
+       
+        //return new Amount((this.amount * factor)/10000, this.currency);
+
         return new Amount((toDouble(this.amount) * factor), this.currency);
     }
 
     public Amount multiply(int factor) {
+
         return new Amount((this.amount * factor), this.currency);
     }
 
@@ -133,12 +138,15 @@ public final class Amount {
 
     @Override
     public String toString() {
+
         // amount (with or without comma)
         if (this.currency.getName() != "Yen")
             return toDouble(this.amount) + " " + this.currency.getCode();
         else {
             return (this.amount / 10000) + " " + this.currency.getCode();
+
         }
+
     }
 
     @Override
@@ -148,11 +156,16 @@ public final class Amount {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
         if (obj instanceof Amount) {
-            // return true if amount and currency is equal. ignore chop!
-            return ((((Amount) obj).amount == this.amount) && (((Amount) obj).currency == this.currency));
+             //return true if amount and currency is equal. ignore chop!
+             return ((((Amount) obj).amount == this.amount) && (((Amount)
+             obj).currency == this.currency));
+           
+
         }
         return false;
     }
-
 }
