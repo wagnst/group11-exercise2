@@ -109,28 +109,33 @@ public class TestAmount {
         Amount amount2 = new Amount(105000, Currencies.EURO);
         Amount amount3 = new Amount(134598, Currencies.EURO);
 
-        //Todo: neue Tests
+        // Todo: neue Tests
 
     }
 
     @Test
     public void testToMultiplyDoubleAndInt() {
-        Amount amount1 = new Amount(10.00, Currencies.EURO);
-        Amount amount2 = new Amount(-5637898, Currencies.RUBEL);
-        Amount amount3 = new Amount(30000, Currencies.EURO);
-        Amount amount4 = new Amount(-129669, Currencies.RUBEL);
-        Amount amount5 = new Amount(500000, Currencies.EURO);
-        Amount amount6 = new Amount(-16044600, Currencies.RUBEL);
+        Amount amountDollar = new Amount(10.00, Currencies.DOLLAR);
+        Amount amountEuro = new Amount(-100, Currencies.EURO);
+        Amount amountYen = new Amount(1000.05, Currencies.YEN);
+        Amount amountRubel = new Amount(0.00, Currencies.RUBEL);
+        Amount amountChf = new Amount(99.99, Currencies.CHF);
 
-        assertEquals(amount3, (amount1.multiply(0.3)));
-        assertEquals(amount4, (amount2.multiply(2.3)));
-        assertEquals(amount5, (amount1.multiply(5)));
-        assertEquals(amount6, (amount2.multiply(78)));
+        Amount a = new Amount(3.0, Currencies.DOLLAR);
+        Amount b = new Amount(-500, Currencies.EURO);
+        Amount c = new Amount(-1500.07, Currencies.YEN);
+        Amount d = new Amount(0.0, Currencies.RUBEL);
+        Amount e = new Amount(0, Currencies.CHF);
 
+        assertEquals(a, amountDollar.multiply(0.3));
+        assertEquals(b, amountEuro.multiply(5));
+        assertEquals(c, amountYen.multiply(-1.5));
+        assertEquals(d, amountRubel.multiply(99.99));
+        assertEquals(e, amountChf.multiply(0));
     }
 
     @Test
-    public void testToPercentage(){
+    public void testToPercentage() {
         Amount amount1 = new Amount(10.00, Currencies.EURO);
         Amount amount2 = new Amount(-205700, Currencies.RUBEL);
         Amount amount3 = new Amount(25000, Currencies.EURO);
