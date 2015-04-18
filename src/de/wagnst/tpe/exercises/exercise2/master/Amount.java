@@ -61,10 +61,6 @@ public final class Amount {
 
     public Amount multiply(double factor) {
 
-        
-       
-        //return new Amount((this.amount * factor)/10000, this.currency);
-
         return new Amount((toDouble(this.amount) * factor), this.currency);
     }
 
@@ -160,10 +156,8 @@ public final class Amount {
             return false;
         }
         if (obj instanceof Amount) {
-             //return true if amount and currency is equal. ignore chop!
-             return ((((Amount) obj).amount == this.amount) && (((Amount)
-             obj).currency == this.currency));
-           
+            // return true if amount and currency is equal. ignore chop!
+            return ((((Amount) obj).amount == this.amount) && (((Amount) obj).currency == this.currency));
 
         }
         return false;
