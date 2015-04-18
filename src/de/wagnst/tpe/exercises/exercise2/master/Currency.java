@@ -1,7 +1,5 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
-import java.util.Arrays;
-
 /**
  * Currency manages special operations on existing Currencies. Every Currency
  * has a name, code, exchange rate and an information if it got a subunit
@@ -15,7 +13,7 @@ public final class Currency {
     private long exchangeRate;
     private boolean subunit;
     // accuracy after the decimal point
-    private int accurancy = 4;
+    private int accuracy = 4;
 
     /**
      * Creates a new currency from the given parameters
@@ -40,8 +38,7 @@ public final class Currency {
      * @return converted amount
      */
     public long convert(long amount, Currency toCurrency) {
-
-        return amount * this.exchangeRate / toCurrency.exchangeRate;
+        return amount * exchangeRate / toCurrency.exchangeRate;
     }
 
     public long getExchangeRate() {
@@ -68,12 +65,13 @@ public final class Currency {
     private String fill() {
         String result = ",";
         // count how many zeroes to add
-        long behind = this.exchangeRate % (long) Math.pow(10, this.accurancy);
-        long count = this.accurancy - String.valueOf(behind).length();
+        long behind = exchangeRate % (long) Math.pow(10, accuracy);
+        long count = accuracy - String.valueOf(behind).length();
 
         for (int i = 0; i < count; i++) {
             result += "0";
         }
+
         return result;
     }
 
@@ -84,10 +82,10 @@ public final class Currency {
      * @return string exchange rate
      */
     private String convertToString(long exchangeRate) {
-        long behind = this.exchangeRate % (long) Math.pow(10, this.accurancy);
-        long infront = this.exchangeRate / (long) Math.pow(10, this.accurancy);
+        long behind = exchangeRate % (long) Math.pow(10, accuracy);
+        long inFront = exchangeRate / (long) Math.pow(10, accuracy);
 
-        return "" + infront + fill() + behind;
+        return "" + inFront + fill() + behind;
     }
 
     /**
@@ -99,13 +97,18 @@ public final class Currency {
     }
 
     /**
-     * generates hashcode based on class Arrays
+     * generates hashcode based prime numbers and different operations
      *
      * @return returns hashcode
      */
+    @Override
     public int hashCode() {
-        return Arrays.hashCode(new double[]{this.exchangeRate,
-                String.valueOf(this.name).length()});
+        int result = name.hashCode();
+        result = 31 * result + code.hashCode();
+        result = 31 * result + (int) (exchangeRate ^ (exchangeRate >>> 32));
+        result = 31 * result + (subunit ? 1 : 0);
+        result = 31 * result + accuracy;
+        return result;
     }
 
     /**
@@ -127,4 +130,5 @@ public final class Currency {
             return false;
         }
     }
+
 }
