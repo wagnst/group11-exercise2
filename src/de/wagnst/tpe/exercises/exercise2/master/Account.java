@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Account manages bookings of money to an account. Every account has an owner
- * as well as a currency
+ * Account manages bookings of money to an bank account. Every account has an
+ * owner as well as a currency. All done transactions to an account (through
+ * post) will get logged in accountHistory
  *
  * @author wagnst
  */
@@ -43,11 +44,12 @@ public class Account {
 
     /**
      * Return an specific element from the bank account history
+     *
      * @param e element number as integer
      * @return element in bank history. if out of bounds return null
      */
     public Amount returnElementInHistory(int e) {
-        if (e < this.accountHistory.size() || e > 0) {
+        if (e < this.accountHistory.size() - 1 || e > 0) {
             return this.accountHistory.get(e);
         } else {
             return null;
