@@ -21,7 +21,7 @@ public final class Currency {
      * @param name         name of the currency as String
      * @param code         short code of the currency
      * @param exchangeRate exchange rate of the currency compared to dollar
-     * @param subunit      is a subunit?
+     * @param subunit      if currency has no commas
      */
     public Currency(String name, String code, long exchangeRate, boolean subunit) {
         this.name = name;
@@ -55,6 +55,10 @@ public final class Currency {
 
     public boolean hasSubunit() {
         return subunit;
+    }
+
+    public int getAccuracy() {
+        return accuracy;
     }
 
     /**
