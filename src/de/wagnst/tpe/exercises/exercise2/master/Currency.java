@@ -19,10 +19,11 @@ public final class Currency {
 
     /**
      * Creates a new currency from the given parameters
-     * @param name name of the currency as String
-     * @param code short code of the currency
+     *
+     * @param name         name of the currency as String
+     * @param code         short code of the currency
      * @param exchangeRate exchange rate of the currency compared to dollar
-     * @param subunit is a subunit?
+     * @param subunit      is a subunit?
      */
     public Currency(String name, String code, long exchangeRate, boolean subunit) {
         this.name = name;
