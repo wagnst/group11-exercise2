@@ -11,7 +11,7 @@ import java.util.List;
  * @author wagnst
  */
 
-public class Account {
+public final class Account {
 
     private final Currency currency;
     private final String owner;
