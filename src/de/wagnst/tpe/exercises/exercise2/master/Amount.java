@@ -3,7 +3,7 @@ package de.wagnst.tpe.exercises.exercise2.master;
 /**
  * Class to make arithmetic operation with the Amounts
  *
- * @author Katharina
+ * @author Kathainka, maxGross, wagnst
  */
 public final class Amount {
 
