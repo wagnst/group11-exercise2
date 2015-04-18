@@ -90,12 +90,12 @@ public final class Amount {
     /**
      * multiplies the amount with a percentage
      *
-     * @param percent factor to multiply with in integer
+     * @param percentage factor to multiply with in integer
      * @return a new amount with the multiplied amount (amount * percentage /
      * 100)
      */
-    public Amount percentage(int percent) {
-        return new Amount(this.amount * percent / 100, this.currency);
+    public Amount percentage(int percentage) {
+        return new Amount(this.amount * percentage / 100, this.currency);
     }
 
     /**
