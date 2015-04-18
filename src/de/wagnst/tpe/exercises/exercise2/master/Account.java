@@ -100,10 +100,16 @@ public class Account {
         return sum;
     }
 
+    /**
+     * @return currency of this bank account
+     */
     public Currency getCurrency() {
         return this.currency;
     }
 
+    /**
+     * @return owner of this bank account
+     */
     public String getOwner() {
         return this.owner;
     }
