@@ -1,5 +1,7 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
+import java.util.Locale;
+
 /**
  * Class to make different arithmetic operation with the Amounts. An amount
  * consists of classical money and a currency which has to be created according
@@ -37,32 +39,31 @@ public final class Amount {
      * Adds to amounts and keeps the currency of the first amount
      *
      * @param other the amount which will be added
-     * @return sum of "other" amount and this amount
+     * @return fluent interface
      */
     public Amount add(Amount other) {
+
         if (this.currency.equals(other.currency)) {
-            return new Amount((this.amount + other.amount), this.currency);
+            this.amount += other.amount;
         } else {
-            return new Amount(this.amount
-                    + other.currency.convert(other.amount, this.currency),
-                    this.currency);
+            this.amount += other.currency.convert(other.amount, this.currency);
         }
+        return this;
     }
 
     /**
      * subtracs to amounts and keeps the currency of the first amount
      *
      * @param other the amount which will be substracted
-     * @return difference of "other" amount and this amount
+     * @return fluent interface
      */
     public Amount subtract(Amount other) {
         if (this.currency.equals(other.currency)) {
-            return new Amount((this.amount - other.amount), this.currency);
+            this.amount -= other.amount;
         } else {
-            return new Amount(this.amount
-                    - other.currency.convert(other.amount, this.currency),
-                    this.currency);
+            this.amount -= other.currency.convert(other.amount, this.currency);
         }
+        return this;
     }
 
     /**
@@ -117,8 +118,7 @@ public final class Amount {
      * @return +1 = Amount >= 0 ; -1 = Amount < 0
      */
     public int getSign() {
-
-        if (amount >= 0) {
+        if (this.amount >= 0) {
             return 1;
         } else {
             return -1;
@@ -159,7 +159,9 @@ public final class Amount {
     public String toString() {
         // amount (with or without comma)
         if (this.currency.getName() != "Yen")
-            return toDouble(this.amount) + " " + this.currency.getCode();
+            return String.format(Locale.ENGLISH, "%.2f %s", toDouble(this.amount),
+                    this
+                            .currency.getCode());
         else {
             return (this.amount / 10000) + " " + this.currency.getCode();
         }
