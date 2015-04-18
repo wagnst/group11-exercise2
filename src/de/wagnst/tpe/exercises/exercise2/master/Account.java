@@ -41,8 +41,17 @@ public class Account {
         this.accountHistory.add(amount);
     }
 
+    /**
+     * Return an specific element from the bank account history
+     * @param e element number as integer
+     * @return element in bank history. if out of bounds return null
+     */
     public Amount returnElementInHistory(int e) {
-        return this.accountHistory.get(e);
+        if (e < this.accountHistory.size() || e > 0) {
+            return this.accountHistory.get(e);
+        } else {
+            return null;
+        }
     }
 
     /**
