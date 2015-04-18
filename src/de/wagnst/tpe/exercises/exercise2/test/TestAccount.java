@@ -25,7 +25,7 @@ public class TestAccount {
         Amount test1 = new Amount(100.00, Currencies.EURO);
 
         steffen.post(test1);
-        assertEquals("100 €", steffen.returnElementInHistory(0));
+        assertEquals("100.00 €", steffen.returnElementInHistory(0).toString());
 
     }
 
@@ -34,10 +34,12 @@ public class TestAccount {
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
         Amount test1 = new Amount(100.00, Currencies.EURO);
         Amount test2 = new Amount(100.00, Currencies.EURO);
+        Amount test3 = new Amount(-100.00, Currencies.EURO);
 
         steffen.post(test1);
         steffen.post(test2);
-        assertEquals("200.00 €", steffen.total());
+        steffen.post(test3);
+        assertEquals("100.00 €", steffen.total().toString());
 
     }
 

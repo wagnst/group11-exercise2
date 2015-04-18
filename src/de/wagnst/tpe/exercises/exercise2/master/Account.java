@@ -64,8 +64,8 @@ public class Account {
      */
     public String getStringAccountHistory() {
         String history = "";
-        for (int i = 0; i < this.accountHistory.size(); i++) {
-            history += this.accountHistory.get(i) + "\n";
+        for (Amount anEntry : this.accountHistory) {
+            history += anEntry + "\n";
         }
         return history;
     }
@@ -86,18 +86,9 @@ public class Account {
      * @return sum of transactions
      */
     public Amount total() {
-        Amount sum = new Amount(0, this.currency);
-        for (int i = 0; i < this.accountHistory.size() - 1; i++) {
-            switch (this.accountHistory.get(i).getSign()) {
-                // transaction is positive
-                case 1:
-                    sum.add(this.accountHistory.get(i));
-                    break;
-                // transaction is negative
-                case -1:
-                    sum.subtract(this.accountHistory.get(i));
-                    break;
-            }
+        Amount sum = new Amount(0.00, this.currency);
+        for (Amount amount : this.accountHistory) {
+            sum.add(amount);
         }
         return sum;
     }
