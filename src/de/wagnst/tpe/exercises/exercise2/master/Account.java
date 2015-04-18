@@ -49,7 +49,7 @@ public class Account {
      * @return element in bank history. if out of bounds return null
      */
     public Amount returnElementInHistory(int e) {
-        if (e < this.accountHistory.size() - 1 || e > 0) {
+        if (e <= this.accountHistory.size() - 1 || e >= 0) {
             return this.accountHistory.get(e);
         } else {
             return null;
