@@ -73,7 +73,6 @@ public final class Amount {
      * @return a new amount with the multiplied amount
      */
     public Amount multiply(double factor) {
-
         return new Amount((toDouble(this.amount) * factor), this.currency);
     }
 
@@ -84,7 +83,6 @@ public final class Amount {
      * @return a new amount with the multiplied amount
      */
     public Amount multiply(int factor) {
-
         return new Amount((this.amount * factor), this.currency);
     }
 

@@ -65,7 +65,7 @@ public class TestAccount {
                 .getStringAccountHistory
                         ());
         steffen.post(test4);
-        assertEquals("1000.00 €\n788.02 €\n788.02 €\n7 €\n", steffen
+        assertEquals("1000.00 €\n788.02 €\n788.02 €\n7.17 €\n", steffen
                 .getStringAccountHistory
                         ());
 
