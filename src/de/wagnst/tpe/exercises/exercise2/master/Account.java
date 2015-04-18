@@ -87,11 +87,11 @@ public class Account {
         Amount sum = new Amount(0, this.currency);
         for (int i = 0; i < this.accountHistory.size() - 1; i++) {
             switch (this.accountHistory.get(i).getSign()) {
-                //positive
+                // transaction is positive
                 case 1:
                     sum.add(this.accountHistory.get(i));
                     break;
-                //negative
+                // transaction is negative
                 case -1:
                     sum.subtract(this.accountHistory.get(i));
                     break;
