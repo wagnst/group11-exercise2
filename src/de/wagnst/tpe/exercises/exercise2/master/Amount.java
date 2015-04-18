@@ -75,7 +75,7 @@ public final class Amount {
      * @return fluent interface
      */
     public Amount multiply(double factor) {
-        return new Amount(amount * factor, currency);
+        return new Amount(toDouble(amount) * factor, currency);
     }
 
     /**
@@ -89,7 +89,7 @@ public final class Amount {
     }
 
     /**
-     * multiplies the amount with a percentage
+     * Calculates the percentage of the amount
      *
      * @param percentage dividend of the division with 100
      * @return fluent interface

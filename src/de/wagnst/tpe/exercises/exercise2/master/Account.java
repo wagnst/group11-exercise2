@@ -13,10 +13,9 @@ import java.util.List;
 
 public class Account {
 
-    private Currency currency;
-    private String owner;
-    private List<Amount> accountHistory = new ArrayList<Amount>();
-
+    private final Currency currency;
+    private final String owner;
+    private final List<Amount> accountHistory = new ArrayList<Amount>();
 
     /**
      * @param owner    name of the account owner (format [String String]
@@ -36,10 +35,10 @@ public class Account {
      */
     public void post(Amount amount) {
         //add transaction to bank statement
-        if (!this.currency.equals(amount.getCurrency())) {
-            amount = amount.convertToCurrency(this.currency);
+        if (!currency.equals(amount.getCurrency())) {
+            amount = amount.convertToCurrency(currency);
         }
-        this.accountHistory.add(amount);
+        accountHistory.add(amount);
     }
 
     /**
@@ -49,8 +48,8 @@ public class Account {
      * @return element in bank history. if out of bounds return null
      */
     public Amount returnElementInHistory(int e) {
-        if (e <= this.accountHistory.size() - 1 || e >= 0) {
-            return this.accountHistory.get(e);
+        if (e <= accountHistory.size() - 1 || e >= 0) {
+            return accountHistory.get(e);
         } else {
             return null;
         }
@@ -64,7 +63,7 @@ public class Account {
      */
     public String getStringAccountHistory() {
         String history = "";
-        for (Amount anEntry : this.accountHistory) {
+        for (Amount anEntry : accountHistory) {
             history += anEntry + "\n";
         }
         return history;
@@ -76,7 +75,7 @@ public class Account {
      * @return bank history as Array List
      */
     public List<Amount> getArrayAccountHistory() {
-        return this.accountHistory;
+        return accountHistory;
     }
 
     /**
@@ -86,9 +85,9 @@ public class Account {
      * @return sum of transactions
      */
     public Amount total() {
-        Amount sum = new Amount(0.00, this.currency);
-        for (Amount amount : this.accountHistory) {
-            sum.add(amount);
+        Amount sum = new Amount(0.00, currency);
+        for (Amount amount : accountHistory) {
+            sum = sum.add(amount);
         }
         return sum;
     }
@@ -97,14 +96,14 @@ public class Account {
      * @return currency of this bank account
      */
     public Currency getCurrency() {
-        return this.currency;
+        return currency;
     }
 
     /**
      * @return owner of this bank account
      */
     public String getOwner() {
-        return this.owner;
+        return owner;
     }
 
     /**
@@ -119,8 +118,8 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Owner: " + this.owner + "\n" +
-                "Currency: " + this.currency.getName() + "\n" +
+        return "Owner: " + owner + "\n" +
+                "Currency: " + currency.getName() + "\n" +
                 "---------" + "\n" +
                 getStringAccountHistory() +
                 "---------" + "\n" +

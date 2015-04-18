@@ -23,7 +23,7 @@ public class TestAmount {
     public void testCreationWithDouble() {
         Amount amount1 = new Amount(-10.00, Currencies.EURO);
         Amount amount2 = new Amount(0.01, Currencies.EURO);
-        Amount amount3 = new Amount(12.993, Currencies.EURO);
+        Amount amount3 = new Amount(12.99, Currencies.EURO);
         Amount amount4 = new Amount(-100000, Currencies.EURO);
         Amount amount5 = new Amount(100, Currencies.EURO);
         Amount amount6 = new Amount(129900, Currencies.EURO);
@@ -37,8 +37,8 @@ public class TestAmount {
     public void testGetSign() {
         Amount amount1 = new Amount(-10000, Currencies.EURO);
         Amount amount2 = new Amount(10000, Currencies.EURO);
-        Amount amount3 = new Amount(-10.000, Currencies.EURO);
-        Amount amount4 = new Amount(10.000, Currencies.EURO);
+        Amount amount3 = new Amount(-10.00, Currencies.EURO);
+        Amount amount4 = new Amount(10.00, Currencies.EURO);
 
         assertEquals(-1, amount1.getSign());
         assertEquals(1, amount2.getSign());
@@ -117,7 +117,7 @@ public class TestAmount {
     public void testToMultiplyDoubleAndInt() {
         Amount amountDollar = new Amount(10.00, Currencies.DOLLAR);
         Amount amountEuro = new Amount(-100, Currencies.EURO);
-        Amount amountYen = new Amount(1000.05, Currencies.YEN);
+        Amount amountYen = new Amount(1000, Currencies.YEN);
         Amount amountRubel = new Amount(0.00, Currencies.RUBEL);
         Amount amountChf = new Amount(99.99, Currencies.CHF);
         Amount spez = new Amount(-1569008, Currencies.DOLLAR);
@@ -125,10 +125,10 @@ public class TestAmount {
 
         Amount a = new Amount(30000, Currencies.DOLLAR);
         Amount b = new Amount(-3300, Currencies.EURO);
-        Amount c = new Amount(-1500.07, Currencies.YEN);
+        Amount c = new Amount(-1500, Currencies.YEN);
         Amount d = new Amount(0.0, Currencies.RUBEL);
         Amount e = new Amount(0, Currencies.CHF);
-        Amount f = new Amount(-371.14, Currencies.DOLLAR);
+        Amount f = new Amount(-3711457L, Currencies.DOLLAR);
         Amount g = new Amount (30, Currencies.YEN);
 
         assertEquals(a, amountDollar.multiply(0.3));
@@ -144,7 +144,7 @@ public class TestAmount {
     public void testToPercentage() {
         Amount amount1 = new Amount(10.00, Currencies.EURO);
         Amount amount2 = new Amount(-205700, Currencies.RUBEL);
-        Amount amount3 = new Amount(25000, Currencies.EURO);
+        Amount amount3 = new Amount(2.50, Currencies.EURO);
         Amount amount4 = new Amount(-102850, Currencies.RUBEL);
 
         assertEquals(amount3, (amount1.percentage(25)));
