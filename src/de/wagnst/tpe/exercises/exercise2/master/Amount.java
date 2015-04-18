@@ -24,9 +24,7 @@ public final class Amount {
     /**
      * Addiert zwei Beträge, die Währung des ersten Betrages wird beibehalten
      *
-     * @param other
-     *            , zu addierender Betrag
-     *
+     * @param other , zu addierender Betrag
      * @return Summe der beiden Beträge
      */
     public Amount add(Amount other) {
@@ -43,9 +41,7 @@ public final class Amount {
      * Subtrahiere zwei Beträge, die Währung des ersten Betrages wird
      * beibehalten
      *
-     * @param other
-     *            , zu subtrahierender Betrag
-     *
+     * @param other , zu subtrahierender Betrag
      * @return Differenz der beiden Beträge
      */
     public Amount subtract(Amount other) {
@@ -103,8 +99,8 @@ public final class Amount {
     /**
      * Gibt Information über die Höhe des gespeicherten Betrages
      *
-     * @return double amount, mit zwei Nachkommastellen
      * @param amount
+     * @return double amount, mit zwei Nachkommastellen
      */
     public double toDouble(long amount) {
         return ((double) (amount / 100)) / 100;
@@ -122,9 +118,7 @@ public final class Amount {
     /**
      * Converts current currency to a new currency
      *
-     * @param toCurrency
-     *            new currency
-     *
+     * @param toCurrency new currency
      * @return converted currency with amount
      */
     public Amount convertToCurrency(Currency toCurrency) {
