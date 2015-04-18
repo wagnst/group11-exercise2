@@ -7,12 +7,12 @@ import java.util.Locale;
  * consists of classical money and a currency which has to be created according
  * to the Currency class.
  *
- * @author Kathainka, maxGross, wagnst
+ * @author Rathainka, wagnst
  */
 public final class Amount {
 
-    private long amount;
-    private Currency currency;
+    private final long amount;
+    private final Currency currency;
 
     /**
      * Creates an Amount of "money" from the given parameters
@@ -26,101 +26,85 @@ public final class Amount {
     }
 
     /**
-     * Creates an Amount of "money" from the given parameters
+     * Creates an Amount of "money" from the given parameters and uses the
+     * accuracy of Currency class
      *
      * @param amount   amount of money in double (will be converted to long)
      * @param currency currency of the amount
      */
     public Amount(double amount, Currency currency) {
-        this(((long) (amount * 100)) * 100, currency);
+        this((long) (Math.pow(10, currency.getAccuracy()) * amount), currency);
     }
 
     /**
-     * Adds to amounts and keeps the currency of the first amount
+     * Adds to amounts and converts the currency from other
      *
      * @param other the amount which will be added
      * @return fluent interface
      */
     public Amount add(Amount other) {
-
+        long newAmount = amount;
         if (this.currency.equals(other.currency)) {
-            this.amount += other.amount;
+            newAmount += other.amount;
         } else {
-            this.amount += other.currency.convert(other.amount, this.currency);
+            newAmount += other.currency.convert(other.amount, this.currency);
         }
-        return this;
+        return new Amount(newAmount, currency);
     }
 
     /**
-     * subtracs to amounts and keeps the currency of the first amount
+     * Subtracts two amounts and converts the currency from other
      *
-     * @param other the amount which will be substracted
+     * @param other the amount which will be subtracted
      * @return fluent interface
      */
     public Amount subtract(Amount other) {
+        long newAmount = amount;
         if (this.currency.equals(other.currency)) {
-            this.amount -= other.amount;
+            newAmount -= other.amount;
         } else {
-            this.amount -= other.currency.convert(other.amount, this.currency);
+            newAmount -= other.currency.convert(other.amount, this.currency);
         }
-        return this;
+        return new Amount(newAmount, currency);
     }
 
     /**
      * multiplies the amount with a factor
      *
      * @param factor factor to multiply with in double
-     * @return a new amount with the multiplied amount
+     * @return fluent interface
      */
     public Amount multiply(double factor) {
-        return new Amount((toDouble(this.amount) * factor), this.currency);
+        return new Amount(amount * factor, currency);
     }
 
     /**
      * multiplies the amount with a factor
      *
      * @param factor factor to multiply with in integer
-     * @return a new amount with the multiplied amount
+     * @return fluent interface
      */
     public Amount multiply(int factor) {
-        return new Amount((this.amount * factor), this.currency);
+        return this.multiply((double) factor);
     }
 
     /**
      * multiplies the amount with a percentage
      *
-     * @param percentage factor to multiply with in integer
-     * @return a new amount with the multiplied amount (amount * percentage /
-     * 100)
+     * @param percentage dividend of the division with 100
+     * @return fluent interface
      */
     public Amount percentage(int percentage) {
-        return new Amount(this.amount * percentage / 100, this.currency);
+        return this.multiply(((double) percentage) / 100);
     }
 
     /**
      * Returns the size of the saved amount
      *
-     * @return long amount, with two decimal places, always positive
+     * @return long amount, always positive
      */
     public long toLong() {
-        long result = this.amount;
-        if (this.amount < 0) {
-            result = this.amount * -1;
-        }
-        return result / 100;
-    }
-
-    /**
-     * Checks is an amount is positive or negative
-     *
-     * @return +1 = Amount >= 0 ; -1 = Amount < 0
-     */
-    public int getSign() {
-        if (this.amount >= 0) {
-            return 1;
-        } else {
-            return -1;
-        }
+        return (long) Math.abs(this.toDouble(amount) * 100);
     }
 
     /**
@@ -130,7 +114,16 @@ public final class Amount {
      * @return amount with two decimal places in double
      */
     public double toDouble(long amount) {
-        return ((double) (amount / 100)) / 100;
+        return ((double) amount / Math.pow(10, currency.getAccuracy()));
+    }
+
+    /**
+     * Checks is an amount is positive or negative
+     *
+     * @return +1 = Amount >= 0 ; -1 = Amount < 0
+     */
+    public int getSign() {
+        return amount >= 0 ? 1 : -1;
     }
 
     /**
@@ -139,7 +132,7 @@ public final class Amount {
      * @return currency of this object
      */
     public Currency getCurrency() {
-        return this.currency;
+        return currency;
     }
 
     /**
@@ -149,37 +142,38 @@ public final class Amount {
      * @return converted currency with amount
      */
     public Amount convertToCurrency(Currency toCurrency) {
-        return new Amount(this.currency.convert(this.amount, toCurrency),
-                toCurrency);
+        return new Amount(this.currency.convert(amount, toCurrency), toCurrency);
     }
 
     @Override
     public String toString() {
         // amount (with or without comma)
-        if (this.currency.getName() != "Yen")
-            return String.format(Locale.ENGLISH, "%.2f %s", toDouble(this.amount),
-                    this
-                            .currency.getCode());
+        if (currency.hasSubunit())
+            return String.format(Locale.ENGLISH, "%.2f %s", toDouble(amount),
+                    this.currency.getCode());
         else {
-            return (this.amount / 10000) + " " + this.currency.getCode();
+            return String.format("%d %s", (long) Math.pow(10,
+                    currency.getAccuracy()), currency.getCode());
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Amount amount1 = (Amount) o;
+
+        if (amount != amount1.amount) return false;
+        if (!currency.equals(amount1.currency)) return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return 0;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (obj instanceof Amount) {
-            // return true if amount and currency is equal. ignore chop!
-            return ((((Amount) obj).amount == this.amount) && (((Amount) obj).currency == this.currency));
-
-        }
-        return false;
+        int result = (int) (amount ^ (amount >>> 32));
+        result = 31 * result + currency.hashCode();
+        return result;
     }
 }
