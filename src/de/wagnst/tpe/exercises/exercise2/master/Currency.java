@@ -8,12 +8,12 @@ package de.wagnst.tpe.exercises.exercise2.master;
  */
 public final class Currency {
 
-    private String name;
-    private String code;
-    private long exchangeRate;
-    private boolean subunit;
+    private final String name;
+    private final String code;
+    private final long exchangeRate;
+    private final boolean subunit;
     // accuracy after the decimal point
-    private int accuracy = 4;
+    private final int accuracy = 4;
 
     /**
      * Creates a new currency from the given parameters
