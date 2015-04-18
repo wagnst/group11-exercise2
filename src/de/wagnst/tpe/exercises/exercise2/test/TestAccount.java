@@ -22,22 +22,22 @@ public class TestAccount {
     @Test
     public void testPost() {
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
-        Amount test1 = new Amount(100, Currencies.EURO);
+        Amount test1 = new Amount(100.00, Currencies.EURO);
 
         steffen.post(test1);
-        assertEquals("100 €", steffen.returnElementInHistory(0).toString());
+        assertEquals("100 €", steffen.returnElementInHistory(0));
 
     }
 
     @Test
     public void testTotal() {
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
-        Amount test1 = new Amount(100, Currencies.EURO);
-        Amount test2 = new Amount(100, Currencies.EURO);
+        Amount test1 = new Amount(100.00, Currencies.EURO);
+        Amount test2 = new Amount(100.00, Currencies.EURO);
 
         steffen.post(test1);
         steffen.post(test2);
-        assertEquals("200 €", steffen.total());
+        assertEquals("200.00 €", steffen.total());
 
     }
 
@@ -49,19 +49,21 @@ public class TestAccount {
     @Test
     public void testReturnAccountHistory() {
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
-        Amount test1 = new Amount(1000, Currencies.EURO);
-        Amount test2 = new Amount(1000, Currencies.DOLLAR);
-        Amount test3 = new Amount(1000, Currencies.DOLLAR);
-        Amount test4 = new Amount(1000, Currencies.YEN);
+        Amount test1 = new Amount(1000.00, Currencies.EURO);
+        Amount test2 = new Amount(1000.00, Currencies.DOLLAR);
+        Amount test3 = new Amount(1000.00, Currencies.DOLLAR);
+        Amount test4 = new Amount(1000.00, Currencies.YEN);
 
         steffen.post(test1);
         steffen.post(test2);
-        assertEquals("1000 €\n788 €\n", steffen.getStringAccountHistory());
-        steffen.post(test3);
-        assertEquals("1000 €\n788 €\n788 €\n", steffen.getStringAccountHistory
+        assertEquals("1000.00 €\n788.02 €\n", steffen.getStringAccountHistory
                 ());
+        steffen.post(test3);
+        assertEquals("1000.00 €\n788.02 €\n788.02 €\n", steffen
+                .getStringAccountHistory
+                        ());
         steffen.post(test4);
-        assertEquals("1000 €\n788 €\n788 €\n7 €\n", steffen
+        assertEquals("1000.00 €\n788.02 €\n788.02 €\n7 €\n", steffen
                 .getStringAccountHistory
                         ());
 
@@ -70,8 +72,8 @@ public class TestAccount {
     @Test
     public void testToString() {
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
-        Amount test1 = new Amount(100, Currencies.EURO);
-        Amount test2 = new Amount(100, Currencies.DOLLAR);
+        Amount test1 = new Amount(100.00, Currencies.EURO);
+        Amount test2 = new Amount(100.00, Currencies.DOLLAR);
         steffen.post(test1);
         steffen.post(test2);
 
