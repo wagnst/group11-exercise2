@@ -1,7 +1,9 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
 /**
- * Class to make arithmetic operation with the Amounts
+ * Class to make different arithmetic operation with the Amounts. An amount
+ * consists of classical money and a currency which has to be created according
+ * to the Currency class.
  *
  * @author Kathainka, maxGross, wagnst
  */
@@ -10,22 +12,32 @@ public final class Amount {
     private long amount;
     private Currency currency;
 
+    /**
+     * Creates an Amount of "money" from the given parameters
+     *
+     * @param amount   amount of money in long
+     * @param currency currency of the amount
+     */
     public Amount(long amount, Currency currency) {
-
         this.amount = amount;
         this.currency = currency;
     }
 
+    /**
+     * Creates an Amount of "money" from the given parameters
+     *
+     * @param amount   amount of money in double (will be converted to long)
+     * @param currency currency of the amount
+     */
     public Amount(double amount, Currency currency) {
-
         this(((long) (amount * 100)) * 100, currency);
     }
 
     /**
-     * Addiert zwei Beträge, die Währung des ersten Betrages wird beibehalten
+     * Adds to amounts and keeps the currency of the first amount
      *
-     * @param other , zu addierender Betrag
-     * @return Summe der beiden Beträge
+     * @param other the amount which will be added
+     * @return sum of "other" amount and this amount
      */
     public Amount add(Amount other) {
         if (this.currency.equals(other.currency)) {
@@ -38,14 +50,12 @@ public final class Amount {
     }
 
     /**
-     * Subtrahiere zwei Beträge, die Währung des ersten Betrages wird
-     * beibehalten
+     * subtracs to amounts and keeps the currency of the first amount
      *
-     * @param other , zu subtrahierender Betrag
-     * @return Differenz der beiden Beträge
+     * @param other the amount which will be substracted
+     * @return difference of "other" amount and this amount
      */
     public Amount subtract(Amount other) {
-
         if (this.currency.equals(other.currency)) {
             return new Amount((this.amount - other.amount), this.currency);
         } else {
@@ -55,24 +65,43 @@ public final class Amount {
         }
     }
 
+    /**
+     * multiplies the amount with a factor
+     *
+     * @param factor factor to multiply with in double
+     * @return a new amount with the multiplied amount
+     */
     public Amount multiply(double factor) {
 
         return new Amount((toDouble(this.amount) * factor), this.currency);
     }
 
+    /**
+     * multiplies the amount with a factor
+     *
+     * @param factor factor to multiply with in integer
+     * @return a new amount with the multiplied amount
+     */
     public Amount multiply(int factor) {
 
         return new Amount((this.amount * factor), this.currency);
     }
 
+    /**
+     * multiplies the amount with a percentage
+     *
+     * @param percent factor to multiply with in integer
+     * @return a new amount with the multiplied amount (amount * percentage /
+     * 100)
+     */
     public Amount percentage(int percent) {
         return new Amount(this.amount * percent / 100, this.currency);
     }
 
     /**
-     * Turns back the height of the saved amount
+     * Returns the size of the saved amount
      *
-     * @return long amount, with two decimal place, always positive
+     * @return long amount, with two decimal places, always positive
      */
     public long toLong() {
         long result = this.amount;
@@ -83,9 +112,9 @@ public final class Amount {
     }
 
     /**
-     * prüft ob der Betrag positiv ist
+     * Checks is an amount is positive or negative
      *
-     * @return +1 = Betrag >= 0 ; -1 = Betrag < 0
+     * @return +1 = Amount >= 0 ; -1 = Amount < 0
      */
     public int getSign() {
 
@@ -97,19 +126,19 @@ public final class Amount {
     }
 
     /**
-     * Gibt Information über die Höhe des gespeicherten Betrages
+     * Returns an amount of money in double
      *
-     * @param amount
-     * @return double amount, mit zwei Nachkommastellen
+     * @param amount amount of money in long
+     * @return amount with two decimal places in double
      */
     public double toDouble(long amount) {
         return ((double) (amount / 100)) / 100;
     }
 
     /**
-     * Liefert für einen Betrag die Währung zurück
+     * Returns the value of currency
      *
-     * @return die Währung des Betrages
+     * @return currency of this object
      */
     public Currency getCurrency() {
         return this.currency;
@@ -128,15 +157,12 @@ public final class Amount {
 
     @Override
     public String toString() {
-
         // amount (with or without comma)
         if (this.currency.getName() != "Yen")
             return toDouble(this.amount) + " " + this.currency.getCode();
         else {
             return (this.amount / 10000) + " " + this.currency.getCode();
-
         }
-
     }
 
     @Override
