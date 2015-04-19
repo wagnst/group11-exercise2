@@ -9,12 +9,12 @@ import java.util.List;
  * post()) will get logged in accountHistory. A single item can be gained
  * with the method <p>returnElementInHistory()</p>. A complete bank statement
  * can be printed with the toString() method.
- * <p/>
+ * <p>
  * New instances can be created with the help of the constructor
  * <pre>
  *     Account account = new Account("Steffen Wagner", Currencies.EURO);
  * </pre>
- * <p/>
+ * </p>
  * Objects  of this class are immutable. The methods don't change the state
  * of their object, but return a new object.
  *
