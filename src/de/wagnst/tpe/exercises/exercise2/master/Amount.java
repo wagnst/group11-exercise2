@@ -79,7 +79,7 @@ public final class Amount {
     }
 
     /**
-     * multiplies the amount with a factor
+     * Multiplies the amount with a factor
      *
      * @param factor factor to multiply with in double
      * @return fluent interface
@@ -89,7 +89,7 @@ public final class Amount {
     }
 
     /**
-     * multiplies the amount with a factor
+     * Multiplies the amount with a factor
      *
      * @param factor factor to multiply with in integer
      * @return fluent interface

@@ -140,7 +140,7 @@ public final class Currency {
     }
 
     /**
-     * generates hashcode based prime numbers and different operations
+     * Generates hashcode based prime numbers and different operations
      *
      * @return returns hashcode
      * @see java.lang.Object#hashCode()
@@ -156,7 +156,7 @@ public final class Currency {
     }
 
     /**
-     * compares if two objects are equal
+     * Compares if two objects are equal
      *
      * @param o object to compare
      * @return boolean
