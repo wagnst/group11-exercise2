@@ -52,6 +52,6 @@ crashlytics-build.properties
 .classpath
 .project
 .settings/
-
+package-info.java
 
 /bin/
