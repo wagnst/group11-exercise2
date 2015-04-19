@@ -6,12 +6,22 @@ import java.util.Locale;
  * Class to make different arithmetic operation with the Amounts. An amount
  * consists of classical money and a currency which has to be created according
  * to the Currency class.
+ * <p/>
+ * New instances can be created with the help of the constructor
+ * <pre>
+ *     Amount amount = new Amount(100.00, Currencies.EURO);
+ * </pre>
+ * <p/>
+ * Objects  of this class are immutable. The methods don't change the state
+ * of their object, but return a new object.
  *
- * @author Rathainka, wagnst
+ * @author wagnst, Rathainka
  */
 public final class Amount {
 
+    /* amount of money */
     private final long amount;
+    /*currency of the amount */
     private final Currency currency;
 
     /**
@@ -145,6 +155,9 @@ public final class Amount {
         return new Amount(this.currency.convert(amount, toCurrency), toCurrency);
     }
 
+    /**
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         // amount (with or without comma)
@@ -157,6 +170,9 @@ public final class Amount {
         }
     }
 
+    /**
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -170,6 +186,9 @@ public final class Amount {
         return true;
     }
 
+    /**
+     * @see java.lang.Object#hashCode()
+     */
     @Override
     public int hashCode() {
         int result = (int) (amount ^ (amount >>> 32));

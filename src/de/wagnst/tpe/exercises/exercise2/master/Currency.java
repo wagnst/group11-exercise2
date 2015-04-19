@@ -3,16 +3,28 @@ package de.wagnst.tpe.exercises.exercise2.master;
 /**
  * Currency manages special operations on existing Currencies. Every Currency
  * has a name, code, exchange rate and an information if it got a subunit
+ * <p>
+ * New instances can be created with the help of the constructor
+ * <pre>
+ *     Currency currency = new Currency("Dollar", "$", 10000, true);
+ * </pre>
+ * </p>
+ * Objects  of this class are immutable. The methods don't change the state
+ * of their object, but return a new object.
  *
- * @author maxGross
+ * @author maxGross, wagnst
  */
 public final class Currency {
 
+    /* long name of currency (e.g. EURO) */
     private final String name;
+    /* short code of currency (e.g. €) */
     private final String code;
+    /* exchange rate compared to US dollar */
     private final long exchangeRate;
+    /* state of unit concerning decimal places */
     private final boolean subunit;
-    // accuracy after the decimal point
+    /* accuracy after the decimal point */
     private final int accuracy = 4;
 
     /**
@@ -31,7 +43,7 @@ public final class Currency {
     }
 
     /**
-     * converts amount into other currency
+     * Converts amount into other currency
      *
      * @param amount     amount to convert
      * @param toCurrency currency to convert into
@@ -41,34 +53,61 @@ public final class Currency {
         return amount * exchangeRate / toCurrency.exchangeRate;
     }
 
+    /**
+     * Returns the exchange rate compared to dollar
+     *
+     * @return the exchange rate of this instance
+     */
     public long getExchangeRate() {
         return exchangeRate;
     }
 
+    /**
+     * Returns the name of the currency
+     *
+     * @return name of currency
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the short code of the currency
+     *
+     * @return short code
+     */
     public String getCode() {
         return code;
     }
 
+    /**
+     * Returns true if currency is a subunit or false if not
+     * This means, that the currency doesn't have decimal places
+     *
+     * @return true for subunit, false no subunit
+     */
     public boolean hasSubunit() {
         return subunit;
     }
 
+    /**
+     * Returns the accuracy of decimal places, which will be used to
+     * recalculate the saved long values
+     *
+     * @return accuracy of decimal places
+     */
     public int getAccuracy() {
         return accuracy;
     }
 
     /**
-     * adds missing zeroes for exchange rate Format "#,####"
+     * Adds missing zeroes for exchange rate Format "#,####"
      *
      * @return filled exchange rate
      */
     private String fill() {
         String result = ",";
-        // count how many zeroes to add
+        /* count how many zeroes to add */
         long behind = exchangeRate % (long) Math.pow(10, accuracy);
         long count = accuracy - String.valueOf(behind).length();
 
@@ -80,7 +119,7 @@ public final class Currency {
     }
 
     /**
-     * converts exchange rate into string
+     * Converts exchange rate into string
      *
      * @param exchangeRate exchange rate : dollar
      * @return string exchange rate
@@ -93,7 +132,7 @@ public final class Currency {
     }
 
     /**
-     * @return String of the currency
+     * @see java.lang.Object#toString()
      */
     public String toString() {
         return "" + name + " [" + code + "] 1 $ = "
@@ -104,6 +143,7 @@ public final class Currency {
      * generates hashcode based prime numbers and different operations
      *
      * @return returns hashcode
+     * @see java.lang.Object#hashCode()
      */
     @Override
     public int hashCode() {
@@ -120,6 +160,7 @@ public final class Currency {
      *
      * @param o object to compare
      * @return boolean
+     * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
     public boolean equals(Object o) {

@@ -4,20 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Account manages bookings of money to an bank account. Every account has an
+ * Account manages bookings of money to a bank account. Every account has an
  * owner as well as a currency. All done transactions to an account (through
- * post) will get logged in accountHistory
+ * post()) will get logged in accountHistory. A single item can be gained
+ * with the method <p>returnElementInHistory()</p>. A complete bank statement
+ * can be printed with the toString() method.
+ * <p/>
+ * New instances can be created with the help of the constructor
+ * <pre>
+ *     Account account = new Account("Steffen Wagner", Currencies.EURO);
+ * </pre>
+ * <p/>
+ * Objects  of this class are immutable. The methods don't change the state
+ * of their object, but return a new object.
  *
  * @author wagnst
  */
 
 public final class Account {
 
+    /* Currency of the bank account */
     private final Currency currency;
+    /* Owner of the bank account */
     private final String owner;
+    /* Account transaction list. Transactions stored in bank accounts currency */
     private final List<Amount> accountHistory = new ArrayList<Amount>();
 
     /**
+     * Creates a new account with the given parameters
+     *
      * @param owner    name of the account owner (format [String String]
      * @param currency currency of the account's money
      */
@@ -28,7 +43,7 @@ public final class Account {
     }
 
     /**
-     * book an amount of money to the account (can be positive or negative) and
+     * Book an amount of money to the account (can be positive or negative) and
      * also convert to the correct currency
      *
      * @param amount amount of money
@@ -93,6 +108,8 @@ public final class Account {
     }
 
     /**
+     * Returns the currency of this bank account
+     *
      * @return currency of this bank account
      */
     public Currency getCurrency() {
@@ -100,6 +117,8 @@ public final class Account {
     }
 
     /**
+     * Returns the owner of this bank account
+     *
      * @return owner of this bank account
      */
     public String getOwner() {
@@ -107,15 +126,18 @@ public final class Account {
     }
 
     /**
-     * set of fees which are charged to the account (product of saldo and
+     * Set of fees which are charged to the account (product of saldo and
      * promills)
      *
-     * @param percentage percentage of due for the bank
+     * @param percentage percentage of dues for the bank
      */
     public void accountFee(int percentage) {
-        //ToDo: implementation
+        //ToDo: IMPLEMENTATION
     }
 
+    /**
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "Owner: " + owner + "\n" +
@@ -126,4 +148,32 @@ public final class Account {
                 "Saldo: " + total().toString();
     }
 
+    /**
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Account account = (Account) o;
+
+        if (accountHistory != null ? !accountHistory.equals(account.accountHistory) : account.accountHistory != null)
+            return false;
+        if (!currency.equals(account.currency)) return false;
+        if (!owner.equals(account.owner)) return false;
+
+        return true;
+    }
+
+    /**
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        int result = currency.hashCode();
+        result = 31 * result + owner.hashCode();
+        result = 31 * result + (accountHistory != null ? accountHistory.hashCode() : 0);
+        return result;
+    }
 }
