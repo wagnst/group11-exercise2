@@ -4,9 +4,10 @@ Project: Bank Account Manager
 
 Progress: Finished
 
-Members: - Rathainka
-		 - maxGross
-		 - wagnst YOLO!
+Members: 
+- Rathainka
+- maxGross
+- wagnst YOLO!
 
 Status: Builds and JUnit tests pass successfully
 
