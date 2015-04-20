@@ -136,7 +136,7 @@ public final class Account {
      *                 account)
      * @throws IllegalArgumentException if promille is not greater than zero
      */
-    public void accountFee(int promille) throws Exception {
+    public void accountFee(int promille) throws IllegalArgumentException {
         if (promille > 0) {
             Amount fee = total().percentage(promille);
             accountHistory.add(fee.invertAmount());
