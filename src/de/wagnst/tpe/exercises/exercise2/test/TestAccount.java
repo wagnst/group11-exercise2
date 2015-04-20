@@ -3,6 +3,7 @@ package de.wagnst.tpe.exercises.exercise2.test;
 import de.wagnst.tpe.exercises.exercise2.master.Account;
 import de.wagnst.tpe.exercises.exercise2.master.Amount;
 import de.wagnst.tpe.exercises.exercise2.master.Currencies;
+import de.wagnst.tpe.exercises.exercise2.master.Currency;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -36,15 +37,27 @@ public class TestAccount {
         Amount test2 = new Amount(100.00, Currencies.EURO);
         Amount test3 = new Amount(-100.00, Currencies.EURO);
 
-        steffen.post(test1);
-        steffen.post(test2);
-        steffen.post(test3);
+        steffen.post(test1, test2, test3);
         assertEquals("100.00 €", steffen.total().toString());
 
     }
 
     @Test
     public void testAccountFee() {
+        /* Really nice pictures on the bank note! */
+        final Currency ZAR = new Currency("South-African Rand", "ZAR",
+                827, true );
+        Account toroeee = new Account("African Elephant", ZAR);
+        Amount test1 = new Amount(100.00, ZAR);
+        Amount test2 = new Amount(100.00, Currencies.EURO);
+        Amount test3 = new Amount(-100.00, Currencies.DOLLAR);
+        Amount test4 = new Amount(-100.00, Currencies.YEN);
+        Amount test5 = new Amount(-100.00, Currencies.RUBEL);
+
+        //toroeee.post();
+        //toroeee.accountFee(10);
+
+
 
     }
 
@@ -56,8 +69,7 @@ public class TestAccount {
         Amount test3 = new Amount(1000.00, Currencies.DOLLAR);
         Amount test4 = new Amount(1000.00, Currencies.YEN);
 
-        steffen.post(test1);
-        steffen.post(test2);
+        steffen.post(test1, test2);
         assertEquals("1000.00 €\n788.02 €\n", steffen.getStringAccountHistory
                 ());
         steffen.post(test3);
@@ -76,9 +88,9 @@ public class TestAccount {
         Account steffen = new Account("Steffen Wagner", Currencies.EURO);
         Amount test1 = new Amount(100.00, Currencies.EURO);
         Amount test2 = new Amount(100.00, Currencies.DOLLAR);
-        steffen.post(test1);
-        steffen.post(test2);
+        Amount test3 = new Amount(-100.00, Currencies.DOLLAR);
 
+        steffen.post(test1, test2);
         assertEquals("Owner: " + steffen.getOwner() + "\n" +
                 "Currency: " + steffen.getCurrency().getName() + "\n" +
                 "---------" + "\n" +
@@ -86,6 +98,13 @@ public class TestAccount {
                 "---------" + "\n" +
                 "Saldo: " + steffen.total().toString()
                 , steffen.toString());
-
+        steffen.post(test3);
+        assertEquals("Owner: " + steffen.getOwner() + "\n" +
+                "Currency: " + steffen.getCurrency().getName() + "\n" +
+                "---------" + "\n" +
+                steffen.getStringAccountHistory() +
+                "---------" + "\n" +
+                "Saldo: " + steffen.total().toString()
+                , steffen.toString());
     }
 }
