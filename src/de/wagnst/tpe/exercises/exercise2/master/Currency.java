@@ -8,7 +8,7 @@ package de.wagnst.tpe.exercises.exercise2.master;
  * <pre>
  *     Currency currency = new Currency("Dollar", "$", 10000, true);
  * </pre>
- * </p>
+ * <p>
  * Objects  of this class are immutable. The methods don't change the state
  * of their object, but return a new object.
  *

@@ -7,14 +7,14 @@ import java.util.List;
  * Account manages bookings of money to a bank account. Every account has an
  * owner as well as a currency. All done transactions to an account (through
  * post()) will get logged in accountHistory. A single item can be gained
- * with the method <p>returnElementInHistory()</p>. A complete bank statement
+ * with the method <i>returnElementInHistory()</i>. A complete bank statement
  * can be printed with the toString() method.
  * <p>
  * New instances can be created with the help of the constructor
  * <pre>
  *     Account account = new Account("Steffen Wagner", Currencies.EURO);
  * </pre>
- * </p>
+ * <p>
  * Objects  of this class are immutable. The methods don't change the state
  * of their object, but return a new object.
  *
@@ -134,6 +134,7 @@ public final class Account {
      *
      * @param promille amount of dues which will be charged (in currency of
      *                 account)
+     * @throws IllegalArgumentException if promille is not greater than zero
      */
     public void accountFee(int promille) throws Exception {
         if (promille > 0) {

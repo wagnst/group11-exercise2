@@ -8,7 +8,7 @@ package de.wagnst.tpe.exercises.exercise2.master;
  * This class could normally better be replaces with a enum, because it does not
  * use the features of a class. It simply creates currencies with the help of
  * the Currency class.
- * </p>
+ * <p>
  *
  * @author maxGross, wagnst
  */

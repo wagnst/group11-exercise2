@@ -6,12 +6,12 @@ import java.util.Locale;
  * Class to make different arithmetic operation with the Amounts. An amount
  * consists of classical money and a currency which has to be created according
  * to the Currency class.
- * <p/>
+ * <p>
  * New instances can be created with the help of the constructor
  * <pre>
  *     Amount amount = new Amount(100.00, Currencies.EURO);
  * </pre>
- * <p/>
+ * <p>
  * Objects  of this class are immutable. The methods don't change the state
  * of their object, but return a new object.
  *
@@ -130,7 +130,7 @@ public final class Amount {
     /**
      * Checks is an amount is positive or negative
      *
-     * @return +1 = Amount >= 0 ; -1 = Amount < 0
+     * @return if positive 1, if negative -1
      */
     public int getSign() {
         return amount >= 0 ? 1 : -1;
