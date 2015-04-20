@@ -46,14 +46,16 @@ public final class Account {
      * Book an amount of money to the account (can be positive or negative) and
      * also convert to the correct currency
      *
-     * @param amount amount of money
+     * @param amount multiple amounts of money (vargargs)
      */
-    public void post(Amount amount) {
-        //add transaction to bank statement
-        if (!currency.equals(amount.getCurrency())) {
-            amount = amount.convertToCurrency(currency);
+    public void post(Amount... amount) {
+        for (Amount currentAmount : amount) {
+            //add transaction to bank statement
+            if (!currency.equals(currentAmount.getCurrency())) {
+                currentAmount = currentAmount.convertToCurrency(currency);
+            }
+            accountHistory.add(currentAmount);
         }
-        accountHistory.add(amount);
     }
 
     /**
@@ -127,12 +129,14 @@ public final class Account {
 
     /**
      * Set of fees which are charged to the account (product of saldo and
-     * promills)
+     * promille)
      *
-     * @param percentage percentage of dues for the bank
+     * @param promille amount of dues which will be charged (in currency of
+     *                 account)
      */
-    public void accountFee(int percentage) {
-        //ToDo: IMPLEMENTATION
+    public void accountFee(int promille) {
+        Amount fee = total().add(new Amount((int) promille / 100, currency));
+        accountHistory.add(fee);
     }
 
     /**
