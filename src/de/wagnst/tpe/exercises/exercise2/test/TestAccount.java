@@ -42,11 +42,11 @@ public class TestAccount {
 
     }
 
-    @Test
-    public void testAccountFee() {
+    @Test(expected=IllegalArgumentException.class)
+    public void testAccountFee() throws Exception {
         /* Really nice pictures on the bank note! */
         final Currency ZAR = new Currency("South-African Rand", "ZAR",
-                827, true );
+                827, true);
         Account totoraaaeee = new Account("African Elephant", ZAR);
         Amount test1 = new Amount(100.00, ZAR);
         Amount test2 = new Amount(100.00, Currencies.EURO);
@@ -54,10 +54,14 @@ public class TestAccount {
         Amount test4 = new Amount(-100.00, Currencies.YEN);
         Amount test5 = new Amount(-100.00, Currencies.RUBEL);
 
-        //totoraaaeee.post();
-        //totoraaaeee.accountFee(10);
-
-
+        totoraaaeee.post(test1, test2, test3, test4, test5);
+        assertEquals("100.00 ZAR\n1534.46 ZAR\n-1209.19 ZAR\n-11.00 " +
+                "ZAR\n-30.83 ZAR\n", totoraaaeee.getStringAccountHistory());
+        totoraaaeee.accountFee(10);
+        assertEquals("100.00 ZAR\n1534.46 ZAR\n-1209.19 ZAR\n-11.00 " +
+                        "ZAR\n-30.83 ZAR\n-38.34 ZAR\n",
+                totoraaaeee.getStringAccountHistory());
+        totoraaaeee.accountFee(-10);
 
     }
 
@@ -70,16 +74,13 @@ public class TestAccount {
         Amount test4 = new Amount(1000.00, Currencies.YEN);
 
         steffen.post(test1, test2);
-        assertEquals("1000.00 €\n788.02 €\n", steffen.getStringAccountHistory
-                ());
+        assertEquals("1000.00 €\n788.02 €\n", steffen.getStringAccountHistory());
         steffen.post(test3);
-        assertEquals("1000.00 €\n788.02 €\n788.02 €\n", steffen
-                .getStringAccountHistory
-                        ());
+        assertEquals("1000.00 €\n788.02 €\n788.02 €\n",
+                steffen.getStringAccountHistory());
         steffen.post(test4);
-        assertEquals("1000.00 €\n788.02 €\n788.02 €\n7.17 €\n", steffen
-                .getStringAccountHistory
-                        ());
+        assertEquals("1000.00 €\n788.02 €\n788.02 €\n7.17 €\n",
+                steffen.getStringAccountHistory());
 
     }
 

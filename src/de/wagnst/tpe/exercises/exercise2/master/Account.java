@@ -135,9 +135,13 @@ public final class Account {
      * @param promille amount of dues which will be charged (in currency of
      *                 account)
      */
-    public void accountFee(int promille) {
-        Amount fee = total().add(new Amount((int) promille / 100, currency));
-        accountHistory.add(fee);
+    public void accountFee(int promille) throws Exception {
+        if (promille > 0) {
+            Amount fee = total().percentage(promille);
+            accountHistory.add(fee.invertAmount());
+        } else {
+            throw new IllegalArgumentException("promille must be greater than zero.");
+        }
     }
 
     /**
