@@ -50,10 +50,11 @@ public final class Account {
      */
     public void post(Amount... amount) {
         for (Amount currentAmount : amount) {
-            //add transaction to bank statement
+            //convert transaction to currency of bank account
             if (!currency.equals(currentAmount.getCurrency())) {
                 currentAmount = currentAmount.convertToCurrency(currency);
             }
+            //add transaction to bank statement
             accountHistory.add(currentAmount);
         }
     }

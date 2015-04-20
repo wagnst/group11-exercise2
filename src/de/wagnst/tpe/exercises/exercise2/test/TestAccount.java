@@ -47,15 +47,15 @@ public class TestAccount {
         /* Really nice pictures on the bank note! */
         final Currency ZAR = new Currency("South-African Rand", "ZAR",
                 827, true );
-        Account toroeee = new Account("African Elephant", ZAR);
+        Account totoraaaeee = new Account("African Elephant", ZAR);
         Amount test1 = new Amount(100.00, ZAR);
         Amount test2 = new Amount(100.00, Currencies.EURO);
         Amount test3 = new Amount(-100.00, Currencies.DOLLAR);
         Amount test4 = new Amount(-100.00, Currencies.YEN);
         Amount test5 = new Amount(-100.00, Currencies.RUBEL);
 
-        //toroeee.post();
-        //toroeee.accountFee(10);
+        //totoraaaeee.post();
+        //totoraaaeee.accountFee(10);
 
 
 
