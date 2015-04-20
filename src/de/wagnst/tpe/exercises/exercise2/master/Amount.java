@@ -156,6 +156,16 @@ public final class Amount {
     }
 
     /**
+     * Inverts an Amount to the opposite. E.g. Amount(10, Euro) will be
+     * Amount(-10, Euro).
+     *
+     * @return inverted amount
+     */
+    public Amount invertAmount() {
+        return new Amount(amount * -1, currency);
+    }
+
+    /**
      * @see java.lang.Object#toString()
      */
     @Override
