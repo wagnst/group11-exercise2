@@ -153,4 +153,35 @@ public class TestAmount {
         assertTrue(a.hashCode() != c.hashCode());
 
     }
+
+    @Test
+    public void testToString(){
+        Amount a = new Amount(15.67945, Currencies.EURO);
+        Amount b = new Amount(10.00, Currencies.DOLLAR);
+        Amount c = new Amount(980239848, Currencies.YEN);
+        Amount d = new Amount(-20.30, Currencies.RUBEL);
+
+        assertEquals("15.67 €", a.toString());
+        assertEquals("10.00 $", b.toString());
+        assertEquals("98023 ¥", c.toString());
+        assertEquals("-20.30 RUB", d.toString());
+    }
+
+    @Test
+    public void testInvertAmount(){
+        Amount a = new Amount(348.23, Currencies.DOLLAR);
+        Amount b = new Amount(-20.30, Currencies.RUBEL);
+
+        Amount result1 = new Amount(- 348.23, Currencies.DOLLAR);
+        Amount result2 = new Amount(20.30, Currencies.DOLLAR);
+
+        assertEquals(result1 , a.invertAmount());
+        assertEquals(result2, b.invertAmount());
+
+    }
+
+    @Test
+    public void testConvertToCurrency(){
+
+    }
 }

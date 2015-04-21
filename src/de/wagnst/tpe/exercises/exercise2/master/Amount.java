@@ -187,7 +187,7 @@ public final class Amount {
                     this.currency.getCode());
         else {
             return String.format("%d %s",
-                    (long) Math.pow(10, currency.getAccuracy()),
+                    (long) (amount / Math.pow(10, currency.getAccuracy())),
                     currency.getCode());
         }
     }
