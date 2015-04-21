@@ -130,4 +130,25 @@ public class TestAmount {
         assertEquals(result3, c.percentage(100));
 
     }
+
+    @Test
+    public void testEquals() {
+        Amount a = new Amount(10.00, Currencies.EURO);
+        Amount b = new Amount(10.00, Currencies.EURO);
+        Amount c = new Amount(10.00, Currencies.YEN);
+
+        assertTrue(a.equals(b));
+        assertFalse(a.equals(c));
+    }
+
+    @Test
+    public void testHashCode() {
+        Amount a = new Amount(10.00, Currencies.EURO);
+        Amount b = new Amount(10.00, Currencies.EURO);
+        Amount c = new Amount(10.00, Currencies.YEN);
+
+        assertTrue(a.hashCode() == b.hashCode());
+        assertTrue(a.hashCode() != c.hashCode());
+
+    }
 }
