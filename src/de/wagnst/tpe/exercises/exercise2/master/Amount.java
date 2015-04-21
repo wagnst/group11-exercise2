@@ -8,7 +8,6 @@ import java.util.Locale;
  * to the Currency class.
  * <p>
  * New instances can be created with the help of the constructor
- * <p>
  * <pre>
  * Amount amount = new Amount(100.00, Currencies.EURO);
  * </pre>
