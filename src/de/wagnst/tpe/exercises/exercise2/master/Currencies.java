@@ -1,14 +1,12 @@
 package de.wagnst.tpe.exercises.exercise2.master;
 
 /**
- * Contains defined objects of currency with its exchange rate to dollar,
- * name, currency symbol and an information if it has a subunit
- *
+ * Contains defined objects of currency with its exchange rate to dollar, name,
+ * currency symbol and an information if it has a subunit
  * <p>
  * This class could normally better be replaces with a enum, because it does not
  * use the features of a class. It simply creates currencies with the help of
  * the Currency class.
- * <p>
  *
  * @author maxGross, wagnst
  */

@@ -8,9 +8,8 @@ package de.wagnst.tpe.exercises.exercise2.master;
  * <pre>
  *     Currency currency = new Currency("Dollar", "$", 10000, true);
  * </pre>
- * <p>
- * Objects  of this class are immutable. The methods don't change the state
- * of their object, but return a new object.
+ * Objects  of this class are immutable. The methods don't change the state of
+ * their object, but return a new object.
  *
  * @author maxGross, wagnst
  */
@@ -47,6 +46,7 @@ public final class Currency {
      *
      * @param amount     amount to convert
      * @param toCurrency currency to convert into
+     *
      * @return converted amount
      */
     public long convert(long amount, Currency toCurrency) {
@@ -81,8 +81,8 @@ public final class Currency {
     }
 
     /**
-     * Returns true if currency is a subunit or false if not
-     * This means, that the currency doesn't have decimal places
+     * Returns true if currency is a subunit or false if not This means, that
+     * the currency doesn't have decimal places
      *
      * @return true for subunit, false no subunit
      */
@@ -91,8 +91,8 @@ public final class Currency {
     }
 
     /**
-     * Returns the accuracy of decimal places, which will be used to
-     * recalculate the saved long values
+     * Returns the accuracy of decimal places, which will be used to recalculate
+     * the saved long values
      *
      * @return accuracy of decimal places
      */
@@ -122,6 +122,7 @@ public final class Currency {
      * Converts exchange rate into string
      *
      * @param exchangeRate exchange rate : dollar
+     *
      * @return string exchange rate
      */
     private String convertToString(long exchangeRate) {
@@ -143,6 +144,7 @@ public final class Currency {
      * Generates hashcode based prime numbers and different operations
      *
      * @return returns hashcode
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -159,7 +161,9 @@ public final class Currency {
      * Compares if two objects are equal
      *
      * @param o object to compare
+     *
      * @return boolean
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override

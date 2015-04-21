@@ -42,7 +42,7 @@ public class TestAccount {
 
     }
 
-    @Test(expected=IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testAccountFee() throws Exception {
         /* Really nice pictures on the bank note! */
         final Currency ZAR = new Currency("South-African Rand", "ZAR",
