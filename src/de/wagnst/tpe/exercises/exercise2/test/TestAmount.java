@@ -4,150 +4,130 @@ import de.wagnst.tpe.exercises.exercise2.master.Amount;
 import de.wagnst.tpe.exercises.exercise2.master.Currencies;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 public class TestAmount {
 
     @Test
-    public void testCreationWithLong() {
-        Amount amount1 = new Amount(-100000, Currencies.EURO);
-        Amount amount2 = new Amount(100, Currencies.EURO);
+    public void testCreation() {
+        Amount a = new Amount(12.99, Currencies.CHF);
+        Amount b = new Amount(-129999, Currencies.DOLLAR);
 
-        assertEquals(1000, amount1.toLong());
-        assertEquals(1, amount2.toLong());
+        Amount result1 = new Amount(12.99, Currencies.CHF);
+        Amount result2 = new Amount(-129999, Currencies.DOLLAR);
+        Amount result3 = new Amount(12.99, Currencies.DOLLAR);
 
-    }
-
-    @Test
-    public void testCreationWithDouble() {
-        Amount amount1 = new Amount(-10.00, Currencies.EURO);
-        Amount amount2 = new Amount(0.01, Currencies.EURO);
-        Amount amount3 = new Amount(12.99, Currencies.EURO);
-        Amount amount4 = new Amount(-100000, Currencies.EURO);
-        Amount amount5 = new Amount(100, Currencies.EURO);
-        Amount amount6 = new Amount(129900, Currencies.EURO);
-
-        assertEquals(amount4, amount1);
-        assertEquals(amount5, amount2);
-        assertEquals(amount6, amount3);
+        assertEquals(result1, a);
+        assertEquals(result2, b);
+        assertNotEquals(result3, a);
     }
 
     @Test
     public void testGetSign() {
-        Amount amount1 = new Amount(-10000, Currencies.EURO);
-        Amount amount2 = new Amount(10000, Currencies.EURO);
-        Amount amount3 = new Amount(-10.00, Currencies.EURO);
-        Amount amount4 = new Amount(10.00, Currencies.EURO);
+        Amount a = new Amount(12.99, Currencies.CHF);
+        Amount b = new Amount(-129999, Currencies.DOLLAR);
+        Amount c = new Amount(0, Currencies.EURO);
 
-        assertEquals(-1, amount1.getSign());
-        assertEquals(1, amount2.getSign());
-        assertEquals(-1, amount3.getSign());
-        assertEquals(1, amount4.getSign());
+        assertTrue(1 == a.getSign());
+        assertTrue(-1 == b.getSign());
+        assertTrue(1 == c.getSign());
     }
 
     @Test
     public void testGetCurrency() {
-        Amount amount1 = new Amount(-10000, Currencies.EURO);
+        Amount a = new Amount(123456, Currencies.EURO);
+        Amount b = new Amount(-129999, Currencies.DOLLAR);
 
-        assertEquals(Currencies.EURO, amount1.getCurrency());
+        assertEquals(Currencies.EURO, a.getCurrency());
+        assertEquals(Currencies.DOLLAR, b.getCurrency());
     }
 
     @Test
-    public void testAddSubLong() {
-        Amount amount1 = new Amount(100000, Currencies.EURO);
-        Amount amount2 = new Amount(-150000, Currencies.EURO);
-        Amount amount3 = new Amount(-50000, Currencies.EURO);
-        Amount amount4 = new Amount(100000, Currencies.DOLLAR);
-        Amount amount5 = new Amount(178802, Currencies.EURO);
-        Amount amount6 = new Amount(100000, Currencies.RUBEL);
-        Amount amount7 = new Amount(100000, Currencies.YEN);
-        Amount amount8 = new Amount(135686, Currencies.RUBEL);
+    public void testAddSub() {
+        Amount a = new Amount(10.00, Currencies.CHF);
+        Amount b = new Amount(-500000, Currencies.DOLLAR);
+        Amount c = new Amount(0, Currencies.EURO);
+        Amount d = new Amount(100000, Currencies.EURO);
 
-        assertEquals(amount3, (amount1.add(amount2)));
-        assertEquals(amount5, (amount1.add(amount4)));
-        assertEquals(amount8, (amount6.add(amount7)));
+        Amount result1 = new Amount(20.00, Currencies.CHF);
+        Amount result2 = new Amount(-500000, Currencies.DOLLAR);
+        Amount result3 = new Amount(-37.31, Currencies.DOLLAR);
 
-        assertEquals(amount1, (amount3.subtract(amount2)));
-        assertEquals(amount1, (amount5.subtract(amount4)));
-        assertEquals(amount6, (amount8.subtract(amount7)));
-    }
+        /* add */
+        assertEquals(result1, a.add(a));
+        assertEquals(result2, b.add(c));
+        assertEquals(result3, b.add(d));
 
-    @Test
-    public void testAddSubDouble() {
-        Amount amount1 = new Amount(10.00, Currencies.EURO);
-        Amount amount2 = new Amount(-15.00, Currencies.EURO);
-        Amount amount3 = new Amount(-5.00, Currencies.EURO);
-        Amount amount4 = new Amount(10.00, Currencies.DOLLAR);
-        Amount amount5 = new Amount(178802, Currencies.EURO);
-        Amount amount6 = new Amount(10.00, Currencies.RUBEL);
-        Amount amount7 = new Amount(10.00, Currencies.YEN);
-        Amount amount8 = new Amount(135686, Currencies.RUBEL);
-
-        assertEquals(amount3, (amount1.add(amount2)));
-        assertEquals(amount5, (amount1.add(amount4)));
-        assertEquals(amount8, (amount6.add(amount7)));
-
-        assertEquals(amount1, (amount3.subtract(amount2)));
-        assertEquals(amount1, (amount5.subtract(amount4)));
-        assertEquals(amount6, (amount8.subtract(amount7)));
-
+        /* sub */
+        assertEquals(a, result1.subtract(a));
+        assertEquals(b, result2.subtract(c));
+        assertEquals(b, result3.subtract(d));
     }
 
     @Test
     public void testToLong() {
-        Amount amount1 = new Amount(10.00, Currencies.EURO);
+        Amount a = new Amount(10.00, Currencies.CHF);
+        Amount b = new Amount(-99.99, Currencies.DOLLAR);
+        Amount c = new Amount(0.00, Currencies.EURO);
 
-        assertNotEquals(100000, amount1.toLong());
-        assertEquals(1000, amount1.toLong());
-
+        assertTrue(100000 == a.toLong());
+        assertTrue(999900 == b.toLong());
+        assertTrue(0 == c.toLong());
     }
 
     @Test
     public void testToDouble() {
-        Amount amount1 = new Amount(100000, Currencies.EURO);
-        Amount amount2 = new Amount(105000, Currencies.EURO);
-        Amount amount3 = new Amount(134598, Currencies.EURO);
+        Amount a = new Amount(100000, Currencies.EURO);
 
-        // Todo: neue Tests
-
+        assertTrue(12.99 == a.toDouble(129999));
+        assertTrue(-3389.12 == a.toDouble(-33891212));
+        assertTrue(0.0 == a.toDouble(0));
     }
 
     @Test
     public void testToMultiplyDoubleAndInt() {
-        Amount amountDollar = new Amount(10.00, Currencies.DOLLAR);
-        Amount amountEuro = new Amount(-100, Currencies.EURO);
-        Amount amountYen = new Amount(1000, Currencies.YEN);
-        Amount amountRubel = new Amount(0.00, Currencies.RUBEL);
-        Amount amountChf = new Amount(99.99, Currencies.CHF);
-        Amount spez = new Amount(-1569008, Currencies.DOLLAR);
-        Amount amountNull = new Amount (15, Currencies.YEN);
+        Amount a = new Amount(10.00, Currencies.EURO);
+        Amount b = new Amount(-500000, Currencies.EURO);
+        Amount c = new Amount(0, Currencies.EURO);
 
-        Amount a = new Amount(30000, Currencies.DOLLAR);
-        Amount b = new Amount(-3300, Currencies.EURO);
-        Amount c = new Amount(-1500, Currencies.YEN);
-        Amount d = new Amount(0.0, Currencies.RUBEL);
-        Amount e = new Amount(0, Currencies.CHF);
-        Amount f = new Amount(-3711457L, Currencies.DOLLAR);
-        Amount g = new Amount (30, Currencies.YEN);
+        Amount result1 = new Amount(20.00, Currencies.EURO);
+        Amount result2 = new Amount(1500000, Currencies.EURO);
+        Amount result3 = new Amount(0, Currencies.EURO);
 
-        assertEquals(a, amountDollar.multiply(0.3));
-        assertEquals(b, amountEuro.multiply(33));
-        assertEquals(c, amountYen.multiply(-1.5));
-        assertEquals(d, amountRubel.multiply(99.99));
-        assertEquals(e, amountChf.multiply(0));
-        assertEquals(f, spez.multiply(2.36548));
-        assertEquals(g, amountNull.multiply(2));
+        Amount result4 = new Amount(25.00, Currencies.EURO);
+        Amount result5 = new Amount(1261500, Currencies.EURO);
+        Amount result6 = new Amount(0.00, Currencies.EURO);
+
+        /* mult(int) */
+        assertEquals(result1, a.multiply(2));
+        assertEquals(result2, b.multiply(-3));
+        assertEquals(result3, c.multiply(15));
+        assertEquals(result3, a.multiply(0));
+        assertEquals(result3, c.multiply(0));
+
+        /* mult(double) */
+        assertEquals(result4, a.multiply(2.5));
+        assertEquals(result5, b.multiply(-2.523));
+        assertEquals(result6, c.multiply(4.5));
+        assertEquals(result6, a.multiply(0.0));
+        assertEquals(result6, c.multiply(0.0));
     }
 
     @Test
     public void testToPercentage() {
-        Amount amount1 = new Amount(10.00, Currencies.EURO);
-        Amount amount2 = new Amount(-205700, Currencies.RUBEL);
-        Amount amount3 = new Amount(2.50, Currencies.EURO);
-        Amount amount4 = new Amount(-102850, Currencies.RUBEL);
+        Amount a = new Amount(10.00, Currencies.EURO);
+        Amount b = new Amount(-500000, Currencies.EURO);
+        Amount c = new Amount(0, Currencies.EURO);
 
-        assertEquals(amount3, (amount1.percentage(25)));
-        assertEquals(amount4, (amount2.percentage(50)));
+        Amount result1 = new Amount(2.5, Currencies.EURO);
+        Amount result2 = new Amount(-440000, Currencies.EURO);
+        Amount result3 = new Amount(0, Currencies.EURO);
+
+        assertEquals(result1, a.percentage(25));
+        assertEquals(result2, b.percentage(88));
+        assertEquals(result3, a.percentage(0));
+        assertEquals(result2, result2.percentage(100));
+        assertEquals(result3, c.percentage(100));
+
     }
 }
