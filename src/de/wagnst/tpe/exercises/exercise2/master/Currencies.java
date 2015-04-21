@@ -42,7 +42,7 @@ public final class Currencies {
      * Rubel of the Russian Federation
      */
     public static final Currency RUBEL = new Currency("Rubel", "RUB",
-            EXCHANGE_RUBEL, false);
+            EXCHANGE_RUBEL, true);
 
     /**
      * Swiss Frank
