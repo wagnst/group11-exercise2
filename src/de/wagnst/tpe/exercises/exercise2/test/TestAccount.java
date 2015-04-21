@@ -55,10 +55,10 @@ public class TestAccount {
         Amount test5 = new Amount(-100.00, Currencies.RUBEL);
 
         totoraaaeee.post(test1, test2, test3, test4, test5);
-        assertEquals("100.00 ZAR\n1534.46 ZAR\n-1209.19 ZAR\n-11.00 " +
+        assertEquals("100.00 ZAR\n1534.46 ZAR\n-1209.18 ZAR\n-11.00 " +
                 "ZAR\n-30.83 ZAR\n", totoraaaeee.getStringAccountHistory());
         totoraaaeee.accountFee(10);
-        assertEquals("100.00 ZAR\n1534.46 ZAR\n-1209.19 ZAR\n-11.00 " +
+        assertEquals("100.00 ZAR\n1534.46 ZAR\n-1209.18 ZAR\n-11.00 " +
                         "ZAR\n-30.83 ZAR\n-38.34 ZAR\n",
                 totoraaaeee.getStringAccountHistory());
         totoraaaeee.accountFee(-10);
