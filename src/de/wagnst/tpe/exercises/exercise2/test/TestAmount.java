@@ -70,8 +70,8 @@ public class TestAmount {
         Amount b = new Amount(-99.99, Currencies.DOLLAR);
         Amount c = new Amount(0.00, Currencies.EURO);
 
-        assertTrue(100000 == a.toLong());
-        assertTrue(999900 == b.toLong());
+        assertTrue(1000 == a.toLong());
+        assertTrue(9999 == b.toLong());
         assertTrue(0 == c.toLong());
     }
 
