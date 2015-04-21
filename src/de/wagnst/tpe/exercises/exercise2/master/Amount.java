@@ -8,12 +8,13 @@ import java.util.Locale;
  * to the Currency class.
  * <p>
  * New instances can be created with the help of the constructor
+ * 
  * <pre>
- *     Amount amount = new Amount(100.00, Currencies.EURO);
+ * Amount amount = new Amount(100.00, Currencies.EURO);
  * </pre>
  * <p>
- * Objects  of this class are immutable. The methods don't change the state
- * of their object, but return a new object.
+ * Objects of this class are immutable. The methods don't change the state of
+ * their object, but return a new object.
  *
  * @author wagnst, Rathainka
  */
@@ -21,14 +22,16 @@ public final class Amount {
 
     /* amount of money */
     private final long amount;
-    /*currency of the amount */
+    /* currency of the amount */
     private final Currency currency;
 
     /**
      * Creates an Amount of "money" from the given parameters
      *
-     * @param amount   amount of money in long
-     * @param currency currency of the amount
+     * @param amount
+     *            amount of money in long
+     * @param currency
+     *            currency of the amount
      */
     public Amount(long amount, Currency currency) {
         this.amount = amount;
@@ -39,8 +42,10 @@ public final class Amount {
      * Creates an Amount of "money" from the given parameters and uses the
      * accuracy of Currency class
      *
-     * @param amount   amount of money in double (will be converted to long)
-     * @param currency currency of the amount
+     * @param amount
+     *            amount of money in double (will be converted to long)
+     * @param currency
+     *            currency of the amount
      */
     public Amount(double amount, Currency currency) {
         this((long) (Math.pow(10, currency.getAccuracy()) * amount), currency);
@@ -49,7 +54,8 @@ public final class Amount {
     /**
      * Adds to amounts and converts the currency from other
      *
-     * @param other the amount which will be added
+     * @param other
+     *            the amount which will be added
      * @return fluent interface
      */
     public Amount add(Amount other) {
@@ -65,7 +71,8 @@ public final class Amount {
     /**
      * Subtracts two amounts and converts the currency from other
      *
-     * @param other the amount which will be subtracted
+     * @param other
+     *            the amount which will be subtracted
      * @return fluent interface
      */
     public Amount subtract(Amount other) {
@@ -81,7 +88,8 @@ public final class Amount {
     /**
      * Multiplies the amount with a factor
      *
-     * @param factor factor to multiply with in double
+     * @param factor
+     *            factor to multiply with in double
      * @return fluent interface
      */
     public Amount multiply(double factor) {
@@ -91,7 +99,8 @@ public final class Amount {
     /**
      * Multiplies the amount with a factor
      *
-     * @param factor factor to multiply with in integer
+     * @param factor
+     *            factor to multiply with in integer
      * @return fluent interface
      */
     public Amount multiply(int factor) {
@@ -101,11 +110,14 @@ public final class Amount {
     /**
      * Calculates the percentage of the amount
      *
-     * @param percentage dividend of the division with 100
+     * @param percentage
+     *            dividend of the division with 100
      * @return fluent interface
      */
     public Amount percentage(int percentage) {
+
         return this.multiply(((double) percentage) / 100);
+
     }
 
     /**
@@ -114,17 +126,20 @@ public final class Amount {
      * @return long amount, always positive
      */
     public long toLong() {
-        return (long) Math.abs(this.toDouble(amount) * 100);
+        return (long) Math.abs(amount);
     }
 
     /**
      * Returns an amount of money in double
      *
-     * @param amount amount of money in long
+     * @param amount
+     *            amount of money in long
      * @return amount with two decimal places in double
      */
     public double toDouble(long amount) {
-        return ((double) amount / Math.pow(10, currency.getAccuracy()));
+        /* return amount with accuracy of two after the decimal point */
+        amount /= Math.pow(10, (currency.getAccuracy() - 2));
+        return (((double) amount) / Math.pow(10, currency.getAccuracy() - 2));
     }
 
     /**
@@ -148,7 +163,8 @@ public final class Amount {
     /**
      * Converts current currency to a new currency
      *
-     * @param toCurrency new currency
+     * @param toCurrency
+     *            new currency
      * @return converted currency with amount
      */
     public Amount convertToCurrency(Currency toCurrency) {
@@ -175,8 +191,9 @@ public final class Amount {
             return String.format(Locale.ENGLISH, "%.2f %s", toDouble(amount),
                     this.currency.getCode());
         else {
-            return String.format("%d %s", (long) Math.pow(10,
-                    currency.getAccuracy()), currency.getCode());
+            return String.format("%d %s",
+                    (long) Math.pow(10, currency.getAccuracy()),
+                    currency.getCode());
         }
     }
 
@@ -185,13 +202,17 @@ public final class Amount {
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Amount amount1 = (Amount) o;
 
-        if (amount != amount1.amount) return false;
-        if (!currency.equals(amount1.currency)) return false;
+        if (amount != amount1.amount)
+            return false;
+        if (!currency.equals(amount1.currency))
+            return false;
 
         return true;
     }
