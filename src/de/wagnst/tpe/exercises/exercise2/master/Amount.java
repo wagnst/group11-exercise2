@@ -100,7 +100,7 @@ public final class Amount {
      * Multiplies the amount with a factor
      *
      * @param factor
-     *            factor to multiply with in integer
+     *            factor to multiply with an integer
      * @return fluent interface
      */
     public Amount multiply(int factor) {
