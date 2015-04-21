@@ -126,7 +126,8 @@ public final class Amount {
      * @return long amount, always positive
      */
     public long toLong() {
-        return (long) Math.abs(amount);
+        return (long) Math.abs(amount
+                / Math.pow(10, currency.getAccuracy() - 2));
     }
 
     /**
