@@ -32,7 +32,7 @@ public class TestCurrencies {
         assertEquals("Rubel", Currencies.RUBEL.getName());
         assertEquals("RUB", Currencies.RUBEL.getCode());
         assertEquals(255, Currencies.RUBEL.getExchangeRate());
-        assertEquals(false, Currencies.RUBEL.hasSubunit());
+        assertEquals(true, Currencies.RUBEL.hasSubunit());
 
         assertEquals("Schweizer Franken", Currencies.CHF.getName());
         assertEquals("CHF", Currencies.CHF.getCode());
