@@ -46,7 +46,6 @@ public final class Currency {
      *
      * @param amount     amount to convert
      * @param toCurrency currency to convert into
-     *
      * @return converted amount
      */
     public long convert(long amount, Currency toCurrency) {
@@ -122,7 +121,6 @@ public final class Currency {
      * Converts exchange rate into string
      *
      * @param exchangeRate exchange rate : dollar
-     *
      * @return string exchange rate
      */
     private String convertToString(long exchangeRate) {
@@ -144,7 +142,6 @@ public final class Currency {
      * Generates hashcode based prime numbers and different operations
      *
      * @return returns hashcode
-     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -161,9 +158,7 @@ public final class Currency {
      * Compares if two objects are equal
      *
      * @param o object to compare
-     *
      * @return boolean
-     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override

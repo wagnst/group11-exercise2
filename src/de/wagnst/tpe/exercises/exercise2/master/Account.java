@@ -62,7 +62,6 @@ public final class Account {
      * Return an specific element from the bank account history
      *
      * @param e element number as integer
-     *
      * @return element in bank history. if out of bounds return null
      */
     public Amount returnElementInHistory(int e) {
@@ -134,7 +133,6 @@ public final class Account {
      *
      * @param promille amount of dues which will be charged (in currency of
      *                 account)
-     *
      * @throws IllegalArgumentException if promille is not greater than zero
      */
     public void accountFee(int promille) throws IllegalArgumentException {

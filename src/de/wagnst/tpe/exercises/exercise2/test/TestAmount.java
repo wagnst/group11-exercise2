@@ -155,7 +155,7 @@ public class TestAmount {
     }
 
     @Test
-    public void testToString(){
+    public void testToString() {
         Amount a = new Amount(15.67945, Currencies.EURO);
         Amount b = new Amount(10.00, Currencies.DOLLAR);
         Amount c = new Amount(980239848, Currencies.YEN);
@@ -168,20 +168,20 @@ public class TestAmount {
     }
 
     @Test
-    public void testInvertAmount(){
+    public void testInvertAmount() {
         Amount a = new Amount(348.23, Currencies.DOLLAR);
         Amount b = new Amount(-20.30, Currencies.RUBEL);
 
-        Amount result1 = new Amount(- 348.23, Currencies.DOLLAR);
+        Amount result1 = new Amount(-348.23, Currencies.DOLLAR);
         Amount result2 = new Amount(20.30, Currencies.RUBEL);
 
-        assertEquals(result1 , a.invertAmount());
+        assertEquals(result1, a.invertAmount());
         assertEquals(result2, b.invertAmount());
 
     }
 
     @Test
-    public void testConvertToCurrency(){
+    public void testConvertToCurrency() {
 
     }
 }
