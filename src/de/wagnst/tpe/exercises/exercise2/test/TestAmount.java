@@ -69,10 +69,12 @@ public class TestAmount {
         Amount a = new Amount(10.00, Currencies.CHF);
         Amount b = new Amount(-99.99, Currencies.DOLLAR);
         Amount c = new Amount(0.00, Currencies.EURO);
+        Amount d = new Amount(129999, Currencies.EURO);
 
         assertTrue(1000 == a.toLong());
         assertTrue(9999 == b.toLong());
         assertTrue(0 == c.toLong());
+        assertTrue(1299 == d.toLong());
     }
 
     @Test
