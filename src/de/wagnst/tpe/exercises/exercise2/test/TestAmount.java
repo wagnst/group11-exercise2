@@ -2,6 +2,7 @@ package de.wagnst.tpe.exercises.exercise2.test;
 
 import de.wagnst.tpe.exercises.exercise2.master.Amount;
 import de.wagnst.tpe.exercises.exercise2.master.Currencies;
+import de.wagnst.tpe.exercises.exercise2.master.Currency;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -172,7 +173,11 @@ public class TestAmount {
         Amount a = new Amount(348.23, Currencies.DOLLAR);
         Amount b = new Amount(-20.30, Currencies.RUBEL);
 
+<<<<<<< HEAD
         Amount result1 = new Amount(-348.23, Currencies.DOLLAR);
+=======
+        Amount result1 = new Amount(- 348.23, Currencies.DOLLAR);
+>>>>>>> added tests for convert to currency
         Amount result2 = new Amount(20.30, Currencies.RUBEL);
 
         assertEquals(result1, a.invertAmount());
@@ -182,6 +187,37 @@ public class TestAmount {
 
     @Test
     public void testConvertToCurrency() {
+
+        final Currency DOLLAR = new Currency("Dollar", "$",
+                10000, true);
+        final Currency EURO = new Currency("Euro", "€",
+                12690, true);
+        final Currency YEN = new Currency("Yen", "¥", 91,
+                false);
+        final Currency RUBEL = new Currency("Rubel", "RUB",
+                255, true);
+        final Currency CHF = new Currency("Schweizer Franken", "CHF",
+                10509, true);
+
+        Amount a = new Amount(348.23, Currencies.DOLLAR);
+        Amount b = new Amount(-20.30, Currencies.RUBEL);
+        Amount c = new Amount(980239848, Currencies.YEN);
+        Amount d = new Amount(-20.30, Currencies.EURO);
+        Amount e = new Amount(4320.3023, Currencies.CHF);
+
+        Amount result1 = new Amount(136560784, Currencies.RUBEL);
+        Amount result2 = new Amount(-5176, Currencies.DOLLAR);
+        Amount result3 = new Amount(7029300, Currencies.EURO);
+        Amount result4 = new Amount(-28308461, Currencies.YEN);
+        Amount result5 = new Amount(43203023, Currencies.CHF);
+
+        assertEquals(result1, a.convertToCurrency(RUBEL));
+        assertEquals(result2, b.convertToCurrency(DOLLAR));
+        assertEquals(result3, c.convertToCurrency(EURO));
+        assertEquals(result4, d.convertToCurrency(YEN));
+        assertEquals(result5, e.convertToCurrency(CHF));
+
+
 
     }
 }
