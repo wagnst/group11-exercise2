@@ -173,11 +173,8 @@ public class TestAmount {
         Amount a = new Amount(348.23, Currencies.DOLLAR);
         Amount b = new Amount(-20.30, Currencies.RUBEL);
 
-<<<<<<< HEAD
+
         Amount result1 = new Amount(-348.23, Currencies.DOLLAR);
-=======
-        Amount result1 = new Amount(- 348.23, Currencies.DOLLAR);
->>>>>>> added tests for convert to currency
         Amount result2 = new Amount(20.30, Currencies.RUBEL);
 
         assertEquals(result1, a.invertAmount());
