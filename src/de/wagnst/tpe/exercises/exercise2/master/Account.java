@@ -11,13 +11,15 @@ import java.util.List;
  * printed with the toString() method.
  * <p>
  * New instances can be created with the help of the constructor
+ * 
  * <pre>
- *     Account account = new Account("Steffen Wagner", Currencies.EURO);
+ * Account account = new Account(&quot;Steffen Wagner&quot;, Currencies.EURO);
  * </pre>
- * Objects  of this class are immutable. The methods don't change the state of
+ * 
+ * Objects of this class are immutable. The methods don't change the state of
  * their object, but return a new object.
  *
- * @author wagnst
+ * @author Steffen Wagner, Maximilian Groß, Katharina Spinner
  */
 
 public final class Account {
@@ -32,8 +34,10 @@ public final class Account {
     /**
      * Creates a new account with the given parameters
      *
-     * @param owner    name of the account owner (format [String String]
-     * @param currency currency of the account's money
+     * @param owner
+     *            name of the account owner (format [String String]
+     * @param currency
+     *            currency of the account's money
      */
     public Account(String owner, Currency currency) {
         this.owner = owner;
@@ -45,15 +49,16 @@ public final class Account {
      * Book an amount of money to the account (can be positive or negative) and
      * also convert to the correct currency
      *
-     * @param amount multiple amounts of money (vargargs)
+     * @param amount
+     *            multiple amounts of money (vargargs)
      */
     public void post(Amount... amount) {
         for (Amount currentAmount : amount) {
-            //convert transaction to currency of bank account
+            // convert transaction to currency of bank account
             if (!currency.equals(currentAmount.getCurrency())) {
                 currentAmount = currentAmount.convertToCurrency(currency);
             }
-            //add transaction to bank statement
+            // add transaction to bank statement
             accountHistory.add(currentAmount);
         }
     }
@@ -61,7 +66,8 @@ public final class Account {
     /**
      * Return an specific element from the bank account history
      *
-     * @param e element number as integer
+     * @param e
+     *            element number as integer
      * @return element in bank history. if out of bounds return null
      */
     public Amount returnElementInHistory(int e) {
@@ -131,16 +137,18 @@ public final class Account {
      * Set of fees which are charged to the account (product of saldo and
      * promille)
      *
-     * @param promille amount of dues which will be charged (in currency of
-     *                 account)
-     * @throws IllegalArgumentException if promille is not greater than zero
+     * @param promille
+     *            amount of dues which will be charged (in currency of account)
+     * @throws IllegalArgumentException
+     *             if promille is not greater than zero
      */
     public void accountFee(int promille) throws IllegalArgumentException {
         if (promille > 0) {
             Amount fee = total().percentage(promille);
             accountHistory.add(fee.invertAmount());
         } else {
-            throw new IllegalArgumentException("promille must be greater than zero.");
+            throw new IllegalArgumentException(
+                    "promille must be greater than zero.");
         }
     }
 
@@ -149,12 +157,9 @@ public final class Account {
      */
     @Override
     public String toString() {
-        return "Owner: " + owner + "\n" +
-                "Currency: " + currency.getName() + "\n" +
-                "---------" + "\n" +
-                getStringAccountHistory() +
-                "---------" + "\n" +
-                "Saldo: " + total().toString();
+        return "Owner: " + owner + "\n" + "Currency: " + currency.getName()
+                + "\n" + "---------" + "\n" + getStringAccountHistory()
+                + "---------" + "\n" + "Saldo: " + total().toString();
     }
 
     /**
@@ -162,15 +167,21 @@ public final class Account {
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Account account = (Account) o;
 
-        if (accountHistory != null ? !accountHistory.equals(account.accountHistory) : account.accountHistory != null)
+        if (accountHistory != null ? !accountHistory
+                .equals(account.accountHistory)
+                : account.accountHistory != null)
             return false;
-        if (!currency.equals(account.currency)) return false;
-        if (!owner.equals(account.owner)) return false;
+        if (!currency.equals(account.currency))
+            return false;
+        if (!owner.equals(account.owner))
+            return false;
 
         return true;
     }
@@ -182,7 +193,8 @@ public final class Account {
     public int hashCode() {
         int result = currency.hashCode();
         result = 31 * result + owner.hashCode();
-        result = 31 * result + (accountHistory != null ? accountHistory.hashCode() : 0);
+        result = 31 * result
+                + (accountHistory != null ? accountHistory.hashCode() : 0);
         return result;
     }
 }
