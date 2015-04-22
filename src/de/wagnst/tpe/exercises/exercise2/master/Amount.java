@@ -16,7 +16,7 @@ import java.util.Locale;
  * Objects of this class are immutable. The methods don't change the state of
  * their object, but return a new object.
  *
- * @author wagnst, Rathainka
+ * @author Katharina Spinner, Steffen Wagner, Maximilian Groß
  */
 public final class Amount {
 
@@ -55,7 +55,8 @@ public final class Amount {
     /**
      * Adds to amounts and converts the currency from other
      *
-     * @param other the amount which will be added
+     * @param other
+     *            the amount which will be added
      * @return fluent interface
      */
     public Amount add(Amount other) {
@@ -71,7 +72,8 @@ public final class Amount {
     /**
      * Subtracts two amounts and converts the currency from other
      *
-     * @param other the amount which will be subtracted
+     * @param other
+     *            the amount which will be subtracted
      * @return fluent interface
      */
     public Amount subtract(Amount other) {
@@ -87,7 +89,8 @@ public final class Amount {
     /**
      * Multiplies the amount with a factor
      *
-     * @param factor factor to multiply with in double
+     * @param factor
+     *            factor to multiply with in double
      * @return fluent interface
      */
     public Amount multiply(double factor) {
@@ -97,7 +100,8 @@ public final class Amount {
     /**
      * Multiplies the amount with a factor
      *
-     * @param factor factor to multiply with an integer
+     * @param factor
+     *            factor to multiply with an integer
      * @return fluent interface
      */
     public Amount multiply(int factor) {
@@ -107,7 +111,8 @@ public final class Amount {
     /**
      * Calculates the percentage of the amount
      *
-     * @param percentage dividend of the division with 100
+     * @param percentage
+     *            dividend of the division with 100
      * @return fluent interface
      */
     public Amount percentage(int percentage) {
@@ -129,7 +134,8 @@ public final class Amount {
     /**
      * Returns an amount of money in double
      *
-     * @param amount amount of money in long
+     * @param amount
+     *            amount of money in long
      * @return amount with two decimal places in double
      */
     public double toDouble(long amount) {
@@ -159,7 +165,8 @@ public final class Amount {
     /**
      * Converts current currency to a new currency
      *
-     * @param toCurrency new currency
+     * @param toCurrency
+     *            new currency
      * @return converted currency with amount
      */
     public Amount convertToCurrency(Currency toCurrency) {
