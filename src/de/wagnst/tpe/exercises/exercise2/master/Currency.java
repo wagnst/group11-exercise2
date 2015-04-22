@@ -5,13 +5,15 @@ package de.wagnst.tpe.exercises.exercise2.master;
  * has a name, code, exchange rate and an information if it got a subunit
  * <p>
  * New instances can be created with the help of the constructor
+ * 
  * <pre>
- *     Currency currency = new Currency("Dollar", "$", 10000, true);
+ * Currency currency = new Currency(&quot;Dollar&quot;, &quot;$&quot;, 10000, true);
  * </pre>
- * Objects  of this class are immutable. The methods don't change the state of
+ * 
+ * Objects of this class are immutable. The methods don't change the state of
  * their object, but return a new object.
  *
- * @author maxGross, wagnst
+ * @author Maximilian Groß, Steffen Wagner, Katharina Spinner
  */
 public final class Currency {
 
@@ -29,10 +31,14 @@ public final class Currency {
     /**
      * Creates a new currency from the given parameters
      *
-     * @param name         name of the currency as String
-     * @param code         short code of the currency
-     * @param exchangeRate exchange rate of the currency compared to dollar
-     * @param subunit      if currency has no commas
+     * @param name
+     *            name of the currency as String
+     * @param code
+     *            short code of the currency
+     * @param exchangeRate
+     *            exchange rate of the currency compared to dollar
+     * @param subunit
+     *            if currency has no commas
      */
     public Currency(String name, String code, long exchangeRate, boolean subunit) {
         this.name = name;
@@ -44,8 +50,10 @@ public final class Currency {
     /**
      * Converts amount into other currency
      *
-     * @param amount     amount to convert
-     * @param toCurrency currency to convert into
+     * @param amount
+     *            amount to convert
+     * @param toCurrency
+     *            currency to convert into
      * @return converted amount
      */
     public long convert(long amount, Currency toCurrency) {
@@ -120,7 +128,8 @@ public final class Currency {
     /**
      * Converts exchange rate into string
      *
-     * @param exchangeRate exchange rate : dollar
+     * @param exchangeRate
+     *            exchange rate : dollar
      * @return string exchange rate
      */
     private String convertToString(long exchangeRate) {
@@ -158,7 +167,8 @@ public final class Currency {
     /**
      * Compares if two objects are equal
      *
-     * @param o object to compare
+     * @param o
+     *            object to compare
      * @return boolean
      * @see java.lang.Object#equals(java.lang.Object)
      */
