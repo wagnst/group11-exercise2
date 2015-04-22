@@ -11,9 +11,11 @@ import java.util.List;
  * printed with the toString() method.
  * <p>
  * New instances can be created with the help of the constructor
+ * 
  * <pre>
- * Account account = new Account("Steffen Wagner", Currencies.EURO);
+ * Account account = new Account(&quot;Steffen Wagner&quot;, Currencies.EURO);
  * </pre>
+ * 
  * Objects of this class are immutable. The methods don't change the state of
  * their object, but return a new object.
  *
@@ -32,7 +34,7 @@ public final class Account {
     /**
      * Creates a new account with the given parameters
      *
-     * @param owner    name of the account owner (format [String String]
+     * @param owner name of the account owner (format [String String]
      * @param currency currency of the account's money
      */
     public Account(String owner, Currency currency) {
@@ -131,7 +133,8 @@ public final class Account {
      * Set of fees which are charged to the account (product of saldo and
      * promille)
      *
-     * @param promille amount of dues which will be charged (in currency of account)
+     * @param promille amount of dues which will be charged (in currency of
+     *        account)
      * @throws IllegalArgumentException if promille is not greater than zero
      */
     public void accountFee(int promille) throws IllegalArgumentException {
