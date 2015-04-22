@@ -8,9 +8,11 @@ import java.util.Locale;
  * to the Currency class.
  * <p>
  * New instances can be created with the help of the constructor
+ * 
  * <pre>
  * Amount amount = new Amount(100.00, Currencies.EURO);
  * </pre>
+ * 
  * Objects of this class are immutable. The methods don't change the state of
  * their object, but return a new object.
  *
@@ -26,20 +28,25 @@ public final class Amount {
     /**
      * Creates an Amount of "money" from the given parameters
      *
-     * @param amount   amount of money in long
-     * @param currency currency of the amount
+     * @param amount
+     *            amount of money in long
+     * @param currency
+     *            currency of the amount
      */
     public Amount(long amount, Currency currency) {
         this.amount = amount;
         this.currency = currency;
+
     }
 
     /**
      * Creates an Amount of "money" from the given parameters and uses the
      * accuracy of Currency class
      *
-     * @param amount   amount of money in double (will be converted to long)
-     * @param currency currency of the amount
+     * @param amount
+     *            amount of money in double (will be converted to long)
+     * @param currency
+     *            currency of the amount
      */
     public Amount(double amount, Currency currency) {
         this((long) (Math.pow(10, currency.getAccuracy()) * amount), currency);

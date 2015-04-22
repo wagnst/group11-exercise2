@@ -21,6 +21,7 @@ public class TestAmount {
         assertEquals(result1, a);
         assertEquals(result2, b);
         assertNotEquals(result3, a);
+
     }
 
     @Test

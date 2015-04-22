@@ -133,6 +133,7 @@ public final class Currency {
     /**
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
         return "" + name + " [" + code + "] 1 $ = "
                 + convertToString(this.exchangeRate) + " " + code;
