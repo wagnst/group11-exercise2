@@ -4,7 +4,6 @@ import de.wagnst.tpe.exercises.exercise2.master.Amount;
 import de.wagnst.tpe.exercises.exercise2.master.Currencies;
 import de.wagnst.tpe.exercises.exercise2.master.Currency;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class TestAmount {
