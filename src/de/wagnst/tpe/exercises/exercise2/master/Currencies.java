@@ -8,7 +8,7 @@ package de.wagnst.tpe.exercises.exercise2.master;
  * use the features of a class. It simply creates currencies with the help of
  * the Currency class.
  *
- * @author maxGross, wagnst
+ * @author Maximilian Groß, Katharina Spinner, Steffen Wagner
  */
 public final class Currencies {
 
